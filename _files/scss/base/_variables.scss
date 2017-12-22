@@ -1,0 +1,42 @@
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.position_absolute {
+    position: absolute;
+}
+
+.position_relative {
+    position: relative;
+}
+
+
+/********* BOOTSTRAP MEDIA-QUERY MIXINS ********* Media Breakpoint  DUBO: down, up, between, only ************
+
+@include media-breakpoint-only(xs) {}  ||  @media (max-width: 575px) {}
+@include media-breakpoint-only(sm) {}  ||  @media (min-width: 576px) and (max-width: 767px) {}
+@include media-breakpoint-only(md) {}  ||  @media (min-width: 768px) and (max-width: 991px) {}
+@include media-breakpoint-only(lg) {}  ||  @media (min-width: 992px) and (max-width: 1199px) {}
+@include media-breakpoint-only(xl) {}  ||  @media (min-width: 1200px) {}
+
+
+@include media-breakpoint-down(xs) {}  ||  @media (max-width: 575px) {}
+@include media-breakpoint-down(sm) {}  ||  @media (max-width: 767px) {}
+@include media-breakpoint-down(md) {}  ||  @media (max-width: 991px) {}
+@include media-breakpoint-down(lg) {}  ||  @media (max-width: 1199px) {}
+
+
+@include media-breakpoint-between(md, xl) {}  ||  @media (min-width: 768px) and (max-width: 1199px) {}
+@include media-breakpoint-between(sm, md) {}  ||  @media (min-width: 576px) and (max-width: 991px) {}
+
+
+@include media-breakpoint-up(xs) {}  ||  @media (min-width: 0px) {}
+@include media-breakpoint-up(sm) {}  ||  @media (min-width: 576px) {}
+@include media-breakpoint-up(md) {}  ||  @media (max-width: 768px) {}
+@include media-breakpoint-up(lg) {}  ||  @media (max-width: 991px) {}
+@include media-breakpoint-up(xl) {}  ||  @media (min-width: 1200px) {}
+
+********* BOOTSTRAP MEDIA-QUERY MIXINS *********/

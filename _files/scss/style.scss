@@ -1,0 +1,183 @@
+@import 'base/variables';
+@import 'base/bootstrap_variables';
+@import 'mixins/breakpoints';
+
+body {
+    background-color: #f2f2f2; //overflow-y: hidden;
+    font-family: "open sans" !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+/**** Dashboard ****/
+.dashboard_lhs {
+    position: fixed;
+    background-color: #2F404C;
+    height: 100vh;
+    color: #fff;
+    padding: 3em 0em;
+    display: flex;
+    //align-items: center;
+    flex-direction: column;
+    z-index: 10;
+
+    @include media-breakpoint-down(xs) {
+        height: auto;
+        position: relative;
+    }
+
+    &__logo_div{  
+        &__logo{
+            font-family: pacifico;
+            line-height: 1.5em;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__user_div{
+        padding: 5em 0 3em;
+        text-align: center;
+        img{
+            $dimension: 100px;
+            width: $dimension;
+            height: $dimension;
+            border-radius: $dimension;
+            border: 5px solid #788B9C;
+        }
+
+        &__name_div{
+            display: flex;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: center;
+            padding-left: 15px;
+        }
+    }
+
+    &__nav_div{
+        display: flex;
+        flex-direction: column;
+        &__nav_item {
+            text-decoration: none !important;
+            color: #fff;
+            padding: 25px 30px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2px;
+            transition: background-color 0.5s ease;
+            i{
+                margin-right: 15px;
+            }
+            &.active {
+                background-color: #202E37;
+            }
+            &:hover, &:active {
+                color: #fff;
+                background-color: #202E37;
+            }
+        }
+    }
+}
+
+.dashboard_rhs {
+    padding: 0px;
+
+    &__contacts_top_bar {
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__page_heading {
+            display: flex;
+            i {
+                margin-right: 15px;
+            }
+            font-size: 24px;
+            font-weight: 600;
+            align-items: center;
+        }
+
+        &__search {
+            flex-grow: 1;
+            text-align: center;
+            input {
+                border: none;
+                outline: none;
+                padding: 12px;
+                width: 50%;
+                border-radius: 4px;
+                padding-left: 40px;
+            }
+            .search_icon {
+                position: relative;
+                top: 8px;
+                left: 37px;
+                color: #888;
+            }
+        }
+
+        &__icons {
+            i {
+                margin-left: 15px;
+                font-size: 30px;
+            }
+        }
+    }
+
+    &__contacts_mid_bar {
+        background-color: #fff;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__lhs {
+            .add_new_button {
+                background-color: #FF5722;
+                padding: 10px 15px;
+                color: #fff;
+                font-weight: 600;
+                border: none;
+                outline: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                i {
+                    margin-right: 5px;
+                    font-size: 20px;
+                }
+            }
+        }
+        &__rhs {
+            i {
+                margin-left: 15px;
+                font-size: 30px;
+            }
+        }
+    }
+    
+    &__contacts_content {
+        padding: 3em 30px;
+        &__row {
+            
+        }
+        &__card_div {
+            padding: 15px;
+            &__card {
+                height: 145px;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+        }
+        
+    }
+}
+/**** Dashboard ****/
