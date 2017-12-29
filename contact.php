@@ -185,7 +185,7 @@
                 <div class="info_card info_card_small">
 
                     <div class="info_card__card_heading">
-                        Other Info
+                        Social
                     </div>
 
                     <div class="row info_card__content_row">
