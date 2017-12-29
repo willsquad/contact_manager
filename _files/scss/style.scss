@@ -1,7 +1,6 @@
 @import 'base/variables';
 @import 'base/bootstrap_variables';
 @import 'mixins/breakpoints';
-
 body {
     background-color: #f2f2f2; //overflow-y: hidden;
     font-family: "open sans" !important;
@@ -22,47 +21,47 @@ button {
 
 @keyframes rotating {
     from {
-      -ms-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  .rotating {
+}
+
+.rotating {
     -webkit-animation: rotating 2s linear infinite;
     -moz-animation: rotating 2s linear infinite;
     -ms-animation: rotating 2s linear infinite;
     -o-animation: rotating 2s linear infinite;
     animation: rotating 2s linear infinite;
-  }
+}
+
 
 /**** Dashboard ****/
+
 .dashboard_lhs {
     position: fixed;
     background-color: #2F404C;
     height: 100vh;
     color: #fff;
     padding: 3em 0em;
-    display: flex;
-    //align-items: center;
+    display: flex; //align-items: center;
     flex-direction: column;
     z-index: 10;
-
     @include media-breakpoint-down(xs) {
         height: auto;
         position: relative;
     }
-
-    &__logo_div{  
-        &__logo{
+    &__logo_div {
+        &__logo {
             font-family: pacifico;
             line-height: 1.5em;
             text-align: left;
@@ -71,19 +70,17 @@ button {
             align-items: center;
         }
     }
-
-    &__user_div{
+    &__user_div {
         padding: 5em 0 3em;
         text-align: center;
-        img{
+        img {
             $dimension: 100px;
             width: $dimension;
             height: $dimension;
             border-radius: $dimension;
             border: 5px solid #788B9C;
         }
-
-        &__name_div{
+        &__name_div {
             display: flex;
             font-weight: 600;
             font-size: 14px;
@@ -93,8 +90,7 @@ button {
             padding-left: 15px;
         }
     }
-
-    &__nav_div{
+    &__nav_div {
         display: flex;
         flex-direction: column;
         &__nav_item {
@@ -107,13 +103,14 @@ button {
             align-items: center;
             margin-bottom: 2px;
             transition: background-color 0.5s ease;
-            i{
+            i {
                 margin-right: 15px;
             }
             &.active {
                 background-color: #202E37;
             }
-            &:hover, &:active {
+            &:hover,
+            &:active {
                 color: #fff;
                 background-color: #202E37;
             }
@@ -123,7 +120,6 @@ button {
 
 .dashboard_rhs {
     padding: 0px;
-
     &__contacts_top_bar {
         padding: 30px;
         display: flex;
@@ -138,7 +134,6 @@ button {
             font-weight: 600;
             align-items: center;
         }
-
         &__search {
             flex-grow: 1;
             text-align: center;
@@ -157,7 +152,6 @@ button {
                 color: #888;
             }
         }
-
         &__icons {
             i {
                 margin-left: 15px;
@@ -165,7 +159,6 @@ button {
             }
         }
     }
-
     &__contacts_mid_bar {
         background-color: #fff;
         padding: 30px;
@@ -211,14 +204,14 @@ button {
                     font-size: 22px;
                     color: #bbb;
                 }
-                input{
+                input {
                     border: none;
                     outline: none;
                     border-bottom: 1px solid #444;
                     width: 250px;
-                    margin-right: 15px; 
+                    margin-right: 15px;
                     padding-left: 25px;
-                    padding-bottom: 5px;           
+                    padding-bottom: 5px;
                 }
             }
             i {
@@ -227,14 +220,12 @@ button {
             }
         }
     }
-
     &__view_contact_mid_bar {
-
         padding: 10px 30px;
         &>div {
             display: flex;
         }
-        &__lhs{
+        &__lhs {
             cursor: pointer;
             i {
                 font-size: 2em;
@@ -243,7 +234,6 @@ button {
         &__center {
             flex-grow: 1;
             justify-content: center;
-
             .user_image {
                 width: 70px;
                 img {
@@ -251,7 +241,6 @@ button {
                     border: 1px solid #ccc;
                 }
             }
-
             .user_name_div {
                 padding-left: 15px;
                 display: flex;
@@ -268,20 +257,81 @@ button {
                     font-weight: 600;
                 }
             }
-
         }
         &__rhs {
-            i{
+            i {
                 margin-left: 30px;
             }
         }
     }
-    
-    &__contacts_content {
-        padding: 2em 30px;
-        &__row {
-            
+
+
+    &__add_contact_mid_bar {
+        padding: 10px 30px;
+        &>div {
+            display: flex;
         }
+        &__lhs {
+            cursor: pointer;
+            i {
+                font-size: 2em;
+            }
+        }
+        &__center {
+            flex-grow: 1;
+            justify-content: center;
+            .plus_icon_div {
+                width: 70px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                i{
+                    font-size: 35px;
+                    position: relative;
+                    top: 0px;
+                    font-weight: bold;
+                }
+            }
+            .user_name_div {
+                padding-left: 5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .contact_text {
+                    color: #A2A2A2;
+                    font-size: 13px;
+                    text-transform: uppercase;
+                }
+                .user_name {
+                    color: #171717;
+                    font-size: 22px;
+                    font-weight: 600;
+                }
+            }
+        }
+        &__rhs {
+            button{
+                padding: 10px 15px;
+                color: #fff;
+                border: none;
+                outline: none;
+                font-family: "open sans";
+                font-size: 14px;
+                margin-left: 15px;
+                &.save_and_close {
+                    background-color: #FF5722;
+                }
+                &.cancel {
+                    background-color: #AAAAAA;
+                }
+            }
+        }
+    }
+
+
+    &__contacts_content {
+        padding: 1em 30px;
+        &__row {}
         &__card_div {
             padding: 15px;
             &__card {
@@ -291,13 +341,10 @@ button {
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
                 padding: 30px 15px;
                 position: relative;
-
                 @include media-breakpoint-down(xs) {
                     max-height: none;
                 }
-
                 &__image_div {
-                    
                     img {
                         width: 75px;
                         border-radius: 50px;
@@ -306,18 +353,14 @@ button {
                         border: 1px solid #ccc;
                     }
                 }
-
                 &__details {
-                    
                     @include media-breakpoint-up(sm) {
                         padding-left: 0px;
                     }
-
                     @include media-breakpoint-down(xs) {
                         text-align: center;
                         margin-top: 2em;
                     }
-
                     h3 {
                         font-size: 18px;
                         font-weight: 600;
@@ -329,64 +372,52 @@ button {
                         align-items: center;
                         margin-bottom: .75em;
                         word-break: break-all;
-
                         @include media-breakpoint-down(xs) {
                             justify-content: center;
                             font-size: 13px;
                         }
-                         
-                        i{
+                        i {
                             font-size: 18px;
                             margin-right: 10px;
                         }
                     }
                 }
-
                 .favorite_icon {
                     position: absolute;
                     top: 10px;
                     right: 10px;
-                    cursor: pointer;
-                    //visibility: hidden;
-
-                    i{
+                    cursor: pointer; //visibility: hidden;
+                    i {
                         color: #999;
                         font-size: 20px;
-
-                        &:hover, &:active {
+                        &:hover,
+                        &:active {
                             color: #eb5767;
                         }
                     }
                     /* &.show {
                         visibility: visible;
                     } */
-
                 }
-
                 .settings_icon {
                     position: absolute;
                     bottom: 5px;
                     right: 10px;
                     cursor: pointer;
-
-                    i{
+                    i {
                         color: #999;
                         font-size: 20px;
                     }
                 }
-
                 .checkbox_div {
                     position: absolute;
                     top: 10px;
                     left: 15px;
-
                     input {
                         cursor: pointer;
                         outline: none;
                     }
-                    
                 }
-
                 .checkbox_fav_settings_container {
                     position: absolute;
                     left: 0;
@@ -399,44 +430,49 @@ button {
             }
         }
 
-        .info_card_div{
+
+        .info_card_div {
             padding: 15px;
         }
-
         .info_card {
-            min-height: 528px;
+            min-height: 510px;
             background-color: #fff;
-
             &.info_card_small {
                 min-height: 0;
             }
-
             &__content_row {
                 padding: 10px 15px;
             }
-
             &__card_heading {
                 padding: 20px 30px;
                 border-bottom: 1px solid #E8E8E8;
                 font-weight: 600;
-                font-size: 20px;
+                font-size: 18px;
                 color: #CA3F1F;
+                @include media-breakpoint-down(lg) {
+                    font-size: 18px;
+                }
             }
             &__info_block_div {
-
                 &__info_block {
                     padding: 15px;
                     .block_title {
                         color: #686868;
-                        font-size: 14px;
+                        font-size: 13px;
+                        @include media-breakpoint-down(lg) {
+                            font-size: 13px;
+                        }
                     }
-                    .block_value{
+                    .block_value {
                         color: #000000;
-                        font-size: 16px;
+                        font-size: 15px;
                         padding: 15px 0px;
                         border-bottom: 1px solid #E8E8E8;
                         font-weight: 600;
-                        &.last{
+                        @include media-breakpoint-down(lg) {
+                            font-size: 15px;
+                        }
+                        &.last {
                             border-bottom: none;
                         }
                         a {
@@ -447,7 +483,89 @@ button {
                 }
             }
         }
-        
+
+        .add_card_div {
+            padding: 15px;
+        }
+        .add_card {
+            //min-height: 510px;
+            //background-color: #fff;
+            &.info_card_small {
+                min-height: 0;
+            }
+            &__content_row {
+                padding: 10px 15px;
+            }
+            &__card_heading {
+                padding: 10px 30px;
+                border-bottom: 1px solid #B9B9B9;
+                font-weight: 600;
+                font-size: 22px;
+                color: #171717;
+                margin-bottom: 10px;
+            }
+            &__info_block_div {
+                &__info_block {
+                    padding: 15px 5px 0px;
+                    .block_title {
+                        color: #000000;
+                        font-size: 15px;
+                    }
+                    .block_value {
+                        color: #000000;
+                        font-size: 15px;
+                        padding: 5px 0px 5px;
+                        font-weight: 600;
+
+                        input{
+                            padding: 15px;
+                            width: 100%;
+                            border: none;
+                            outline: none;
+                            box-shadow: inset 0 1px 1px rgba(0,0,0,.125);
+                            border-radius: 4px;
+                        }
+                        &.last {
+                            border-bottom: none;
+                        }
+                        a {
+                            color: #2E6FD7;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        .add_photo_div{
+            padding: 30px 30px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .photo {
+                width: 150px;
+                height: 150px;
+                border-radius: 100px;
+                background-color: #888;
+                border: 1px solid #ccc;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                i{
+                    font-size: 4em;
+                    color: #fff;
+                }
+            }
+            .add_photo_text{
+                font-family: "open sans";
+                margin-top: 10px;
+                color: #5D5D5D;
+                font-size: 14px;
+            }
+        }
     }
 }
+
+
 /**** Dashboard ****/
