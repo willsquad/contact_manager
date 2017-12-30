@@ -25,18 +25,23 @@
         </div>
 
         <div class="dashboard_rhs__add_contact_mid_bar__center">
-            <!-- <div class="plus_icon_div">
-                <i class="material-icons">add</i>
-            </div> -->
+            <div class="user_image hidden-sm-down">
+                <img src="_files/images/profile2.jpg" alt="">
+                <div class="user_image_text">Change Photo</div>
+            </div>
             <div class="user_name_div">
-                <div class="contact_text">Create Contact</div>
-                <div class="user_name">Add New Contact</div>
+                <div class="contact_text">Edit Contact</div>
+                <div class="user_name">Jane Doe</div>
             </div>
         </div>
 
-        <div class="dashboard_rhs__add_contact_mid_bar__rhs">
+        <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
             <button class="save_and_close">Save &amp; Close</button>
             <button class="cancel">Cancel</button>
+        </div>
+
+        <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
+            <i class="material-icons">more_vert</i>
         </div>
 
     </div>
@@ -46,49 +51,38 @@
     <div class="dashboard_rhs__contacts_content">
         <div class="dashboard_rhs__contacts_content__row row ">
 
-        <div class="col-12 add_photo_div">
-            <div class="photo">
-                <i class="material-icons">person</i>
-            </div>
-
-            <div class="add_photo_text">Add Photo</div>
-        </div>
-
             <!-- START OF INFO CARD  -->
-            <div class="col-12 add_card_div">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 add_card_div">
                 <div class="add_card">
                     <div class="add_card__card_heading">
                         Contact Details
                     </div>
 
                     <div class="row add_card__content_row">
-                        <div class="col-12 col-sm-12 col-md-4 add_card__info_block_div">
+
+                        <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div hidden-md-up">
+                            <div class="user_image">
+                                <img src="_files/images/profile2.jpg" alt="">
+                                <div class="user_image_text">Change Photo</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
                                 <div class="block_title">
                                     First Name:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text">
+                                    <input type="text" value="Jane">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-4 add_card__info_block_div">
-                            <div class="add_card__info_block_div__info_block">
-                                <div class="block_title">
-                                    Middle Name:
-                                </div>
-                                <div class="block_value">
-                                    <input type="text">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 add_card__info_block_div">
+                        <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
                                 <div class="block_title">
                                     Last Name:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text">
+                                    <input type="text" value="Doe">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +92,7 @@
                                     Phone:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text">
+                                    <input type="text" value="+1234567890">
                                 </div>
                             </div>
                         </div>
@@ -108,7 +102,7 @@
                                     Email:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text">
+                                    <input type="text" value="jane@doemail.com">
                                 </div>
                             </div>
                         </div>
@@ -118,7 +112,7 @@
                                     Organization:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text">
+                                    <input type="text" value="Doemail, Inc">
                                 </div>
                             </div>
                         </div>
@@ -128,7 +122,17 @@
                                     Job Title:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text">
+                                    <input type="text" value="Business Analyst">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
+                            <div class="add_card__info_block_div__info_block">
+                                <div class="block_title">
+                                    Work Phone:
+                                </div>
+                                <div class="block_value last">
+                                    <input type="text" value="+1234567891">
                                 </div>
                             </div>
                         </div>
@@ -137,6 +141,9 @@
             </div>
             <!-- END OF INFO CARD  -->
 
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                <div class="row">
                     <!-- START OF INFO CARD  -->
                     <div class="col-12 add_card_div">
                         <div class="add_card add_card_small">
@@ -146,35 +153,35 @@
                             </div>
 
                             <div class="row add_card__content_row">
-                                <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
+                                <div class="col-12 col-sm-12 col-md-4 add_card__info_block_div">
+                                    <div class="add_card__info_block_div__info_block">
+                                        <div class="block_title">
+                                            Middle Name:
+                                        </div>
+                                        <div class="block_value last">
+                                            <input type="text" value="Goodall">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-4 add_card__info_block_div">
                                     <div class="add_card__info_block_div__info_block">
                                         <div class="block_title">
                                             Date of Birth:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text">
+                                            <input type="text" value="-">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
+                                <div class="col-12 col-sm-12 col-md-4 add_card__info_block_div">
                                     <div class="add_card__info_block_div__info_block">
                                         <div class="block_title">
                                             Gender:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
-                                    <div class="add_card__info_block_div__info_block">
-                                        <div class="block_title">
-                                            Home Phone:
-                                        </div>
-                                        <div class="block_value last">
-                                            <input type="text">
+                                            <input type="text" value="Female">
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +206,7 @@
                                             Website:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text">
+                                            <input type="text" value="janedoe.com">
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +217,7 @@
                                             Facebook:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text">
+                                            <input type="text" value="facebook.com/janedoe">
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +228,7 @@
                                             Linkedin:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text">
+                                            <input type="text" value="linkedin.com/janedoe">
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +239,7 @@
                                             Twitter:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text">
+                                            <input type="text" value="twitter.com/janedoe">
                                         </div>
                                     </div>
                                 </div>
@@ -240,6 +247,9 @@
                         </div>
                     </div>
                     <!-- END OF INFO CARD  -->
+
+                </div>
+            </div>
 
         </div>
     </div>
