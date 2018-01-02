@@ -21,8 +21,9 @@
                 <!-- START OF MID BAR  -->
                 <div class="dashboard_rhs__contacts_mid_bar">
                     <div class="dashboard_rhs__contacts_mid_bar__lhs">
-                        <button class="add_new_button">
-                            <i class="material-icons">add</i> Add New</button>
+                        <a class="add_new_button" href="add-contact.php">
+                            <i class="material-icons">add</i> Add New
+                        </a>
                     </div>
                     <div class="dashboard_rhs__contacts_mid_bar__rhs">
                         <div class="dashboard_rhs__contacts_mid_bar__rhs__search hidden-md-down">

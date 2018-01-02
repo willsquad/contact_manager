@@ -169,8 +169,8 @@ button {
         &__lhs {
             .add_new_button {
                 background-color: #FF5722;
-                padding: 10px 15px;
-                color: #fff;
+                padding: 10px 20px;
+                color: #fff !important;
                 font-weight: 600;
                 border: none;
                 outline: none;
@@ -179,9 +179,18 @@ button {
                 justify-content: center;
                 font-size: 14px;
                 text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.1s ease;
+                text-decoration: none;
                 i {
-                    margin-right: 5px;
+                    margin-right: 2px;
                     font-size: 20px;
+                }
+                &:hover {
+                    transform: translateY(0px);
+                }
+                &:active {
+                    transform: translateY(2px);
                 }
             }
         }
@@ -227,8 +236,10 @@ button {
         }
         &__lhs {
             cursor: pointer;
+            
             i {
                 font-size: 2em;
+                color: #333 !important;
             }
         }
         &__center {
@@ -275,6 +286,7 @@ button {
             cursor: pointer;
             i {
                 font-size: 2em;
+                color: #333 !important;
             }
         }
         &__center {
@@ -565,18 +577,18 @@ button {
                         padding: 10px 0px 0px;
                         border-bottom: 1px solid #E8E8E8;
                         font-weight: 600;
-                        input{
-
+                        input, select{
                             background-color: #f2f2f2;
-                            color: #43454b;
+                            color: #333;
                             outline: 0;
                             border: 0;
-                            -webkit-appearance: none;
+                            //-webkit-appearance: none;
                             box-sizing: border-box;
                             font-weight: 400;
                             box-shadow: inset 0 1px 1px rgba(0,0,0,.125);
                             width: 100%;
                             padding: 10px;
+                            height: 40px;
                         }
 
                         @include media-breakpoint-down(lg) {

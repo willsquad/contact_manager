@@ -22,7 +22,9 @@
     <!-- START OF MID BAR  -->
     <div class="dashboard_rhs__contacts_mid_bar dashboard_rhs__view_contact_mid_bar">
         <div class="dashboard_rhs__view_contact_mid_bar__lhs">
-            <i class="material-icons">arrow_back</i>
+            <a  href="index.php">
+                <i class="material-icons">arrow_back</i>
+            </a>
         </div>
 
         <div class="dashboard_rhs__view_contact_mid_bar__center">

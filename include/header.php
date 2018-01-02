@@ -1,3 +1,20 @@
+<?php
+	
+	// Require the configuration before any PHP code as the configuration controls error reporting:
+	require('./include/config.inc.php');
+	// The config file also starts the session.
+	
+	// Require the database connection:
+	require(MYSQL);
+	
+	$basename = basename($_SERVER['PHP_SELF']);
+		
+	//redirect_invalid_user();
+	
+	
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
