@@ -312,8 +312,10 @@ button {
                 top: 5px;
                 img {
                     width: 60px;
-                    border-radius: 70px;
-                    //border: 1px solid #ccc;
+                    height: 60px;
+                    border-radius: 60px;
+                    background: #999;
+                    border: 1px solid #ccc;
                 }
                 .user_image_text {
                     font-size: 12px;
@@ -633,6 +635,10 @@ button {
                 font-size: 14px;
             }
         }
+    }
+
+    .user_img_file {
+        display: none !important;
     }
 }
 

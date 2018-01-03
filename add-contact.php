@@ -28,8 +28,9 @@
 
         <div class="dashboard_rhs__add_contact_mid_bar__center">
             <div class="user_image hidden-sm-down">
-                <img src="_files/images/profile_icon.png" alt="">
-                <div class="user_image_text">Photo</div>
+                <img class="user_image_img user_image_img_desktop" src="_files/images/profile_icon.png" alt="">
+                <input type='file' id="user_img_file_desktop" class="user_img_file user_img_file_desktop" name="user_img_file_desktop">
+                <div class="user_image_text">Add Photo</div>
             </div>
             <div class="user_name_div">
                 <div class="contact_text">Create Contact</div>
@@ -48,6 +49,7 @@
 
     </div>
     <!-- END OF MID BAR  -->
+    
 
     <!-- START OF RHS CONTENT  -->
     <div class="dashboard_rhs__contacts_content">
@@ -64,11 +66,11 @@
 
                         <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div hidden-md-up">
                             <div class="user_image">
-                                <img src="_files/images/profile_icon.png" alt="">
+                                <img class="user_image_img user_image_img_mobile" src="_files/images/profile_icon.png" alt="">
+                                <input type='file' id="user_img_file_mobile" class="user_img_file user_img_file_mobile" name="user_img_file_mobile">
                                 <div class="user_image_text">Add Photo</div>
                             </div>
                         </div>
-
 
                         <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
@@ -76,7 +78,7 @@
                                     First Name:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text" class="contact_fname contact_fname_js" required>
+                                    <input type="text" id="contact_fname" class="contact_fname contact_fname_js" required>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +88,7 @@
                                     Last Name:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text" class="contact_lname contact_lname_js">
+                                    <input type="text" id="contact_lname" class="contact_lname contact_lname_js">
                                 </div>
                             </div>
                         </div>
@@ -96,7 +98,7 @@
                                     Phone:
                                 </div>
                                 <div class="block_value">
-                                    <input type="phone" class="contact_phone contact_phone_js">
+                                    <input type="phone" id="contact_phone" class="contact_phone contact_phone_js">
                                 </div>
                             </div>
                         </div>
@@ -106,7 +108,7 @@
                                     Email:
                                 </div>
                                 <div class="block_value">
-                                    <input type="email" class="contact_email contact_email_js">
+                                    <input type="email" id="contact_email" class="contact_email contact_email_js">
                                 </div>
                             </div>
                         </div>
@@ -116,7 +118,7 @@
                                     Organization:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text" class="contact_organization contact_organization_js">
+                                    <input type="text" id="contact_organization" class="contact_organization contact_organization_js">
                                 </div>
                             </div>
                         </div>
@@ -126,7 +128,7 @@
                                     Job Title:
                                 </div>
                                 <div class="block_value">
-                                    <input type="text" class="contact_jobTitle contact_jobTitle_js">
+                                    <input type="text" id="contact_jobTitle" class="contact_jobTitle contact_jobTitle_js">
                                 </div>
                             </div>
                         </div>
@@ -136,7 +138,7 @@
                                     Work Phone:
                                 </div>
                                 <div class="block_value last">
-                                    <input type="text" class="contact_workPhone contact_workPhone_js">
+                                    <input type="text" id="contact_workPhone" class="contact_workPhone contact_workPhone_js">
                                 </div>
                             </div>
                         </div>
@@ -163,7 +165,7 @@
                                             Middle Name:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" class="contact_mname contact_mname_js">
+                                            <input type="text" id="contact_mname" class="contact_mname contact_mname_js">
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +176,7 @@
                                             Date of Birth:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="date" class="contact_dob contact_dob_js">
+                                            <input type="date" id="contact_dob" class="contact_dob contact_dob_js">
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +187,7 @@
                                             Gender:
                                         </div>
                                         <div class="block_value last">
-                                            <select name="contact_gender contact_gender_js" id="contact_gender">
+                                            <select id="contact_gender" name="contact_gender contact_gender_js" id="contact_gender">
                                                 <option value="M">Male</option>
                                                 <option value="F">Female</option>
                                                 <option value="O">Other</option>
@@ -214,7 +216,7 @@
                                             Website:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" class="contact_website contact_website_js">
+                                            <input type="text" id="contact_website" class="contact_website contact_website_js">
                                         </div>
                                     </div>
                                 </div>
@@ -225,7 +227,7 @@
                                             Facebook:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" class="contact_facebook contact_facebook_js">
+                                            <input type="text" id="contact_facebook" class="contact_facebook contact_facebook_js">
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +238,7 @@
                                             Linkedin:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" class="contact_linkedin contact_linkedin_js">
+                                            <input type="text" id="contact_linkedin" class="contact_linkedin contact_linkedin_js">
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +249,7 @@
                                             Twitter:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" class="contact_twitter contact_twitter_js">
+                                            <input type="text" id="contact_twitter" class="contact_twitter contact_twitter_js">
                                         </div>
                                     </div>
                                 </div>
@@ -255,6 +257,7 @@
                         </div>
                     </div>
                     <!-- END OF INFO CARD  -->
+                    </form>
 
                 </div>
             </div>

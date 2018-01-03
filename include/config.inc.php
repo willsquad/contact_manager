@@ -13,9 +13,9 @@ DEFINE('CONTACT_EMAIL', 'willsquad.aj@gmail.com');
 // ************ CONSTANTS *********** //
 
 // Determine location of files and the URL of the site:
-define ('BASE_URI', 'D:/Softwares/Xampp/htdocs/contact_manager/include/');
+define ('BASE_URI', 'D:/Softwares/Xampp/htdocs/contact_manager/');
 define ('BASE_URL', 'http://localhost:55001/contact_manager/');
-define ('MYSQL', BASE_URI . 'mysql.inc.php');
+define ('MYSQL', BASE_URI . 'include/mysql.inc.php');
 
 // ************ CONSTANTS *********** //
 // ********************************** //

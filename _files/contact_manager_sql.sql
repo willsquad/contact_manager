@@ -27,6 +27,7 @@ CREATE TABLE contacts_8521 (
     c_workPhone VARCHAR(20),
     c_dob DATE,
     c_gender enum('M','F', 'O'), 
+    c_profile_pic VARCHAR(100) DEFAULT 'profile_icon.png',
     c_website VARCHAR(50),
     c_linkedin VARCHAR(50),
     c_twitter VARCHAR(50),
