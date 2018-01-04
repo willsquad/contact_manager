@@ -1,4 +1,12 @@
-<?php include('include/header.php'); ?>
+<?php 
+
+include('include/header.php'); 
+
+// config file is included in the header
+
+$cid = md5(uniqid(time(), true)).getToken(32);
+
+?>
 
 <!-- START OF RHS  -->
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs">
@@ -39,8 +47,8 @@
         </div>
     <form id="add_contact_form" name="add_contact_form" method="post" action="#">
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
-            <button type="submit" class="save_and_close">Save &amp; Close</butto>
-            <button class="cancel">Cancel</button>
+            <button type="submit" class="save_and_close" data-cid="<?php echo $cid;?>">Save &amp; Close</button>
+            <a class="cancel_add_contact">Cancel</a>
         </div>
 
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">

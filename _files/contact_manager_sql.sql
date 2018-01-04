@@ -32,7 +32,7 @@ CREATE TABLE contacts_8521 (
     c_linkedin VARCHAR(50),
     c_twitter VARCHAR(50),
     c_facebook VARCHAR(50),
-    c_additionalSocial VARCHAR(50),
+    c_additionalSocial TEXT,
     c_additionalPhones TEXT,
     c_additionalEmails TEXT,
     c_unique_id CHAR(64),
@@ -42,3 +42,5 @@ CREATE TABLE contacts_8521 (
     INDEX added_by (added_by_u_id),
     FULLTEXT INDEX fname (c_fname)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+
+/* Columns to add : Added time (INT), Favourite (1,0)  */

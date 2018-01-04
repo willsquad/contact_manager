@@ -57,6 +57,7 @@ $(document).ready(function() {
     $(document).on('submit', '#add_contact_form', function() {
         var save_contact_button = $('.save_and_close');
 
+        var contact_cid = save_contact_button.attr('data-cid');
         var contact_fname = $("#contact_fname").val();
         var contact_lname = $("#contact_lname").val();
         var contact_phone = $("#contact_phone").val();
@@ -75,6 +76,7 @@ $(document).ready(function() {
         var contact_save_type = 1;
 
         contact_formData.append('contact_save_type', contact_save_type);
+        contact_formData.append('contact_cid', contact_cid);
         contact_formData.append('contact_fname', contact_fname);
         contact_formData.append('contact_lname', contact_lname);
         contact_formData.append('contact_phone', contact_phone);
@@ -103,7 +105,8 @@ $(document).ready(function() {
               save_contact_button.html('Saving...'); // change submit button text
             },
             success: function() {
-                save_contact_button.html('Saved'); // reset submit button text
+                save_contact_button.html('Redirecting'); // reset submit button text
+                window.location.replace(absolute_link+"/")
             },
             error: function(e) {
               console.log(e);
@@ -113,6 +116,11 @@ $(document).ready(function() {
         return false;
     });
     /** Add New Contact **/
+
+    /** Reset/Refresh page **/
+    $(document).on('click', 'a.cancel_add_contact', function() {
+        window.location.href=window.location.href;    
+    });
 
 
 });

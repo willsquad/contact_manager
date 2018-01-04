@@ -360,9 +360,19 @@ button {
                 &.save_and_close {
                     background-color: #FF5722;
                 }
-                &.cancel {
-                    background-color: #AAAAAA;
-                }
+                
+            }
+            a.cancel_add_contact {
+                padding: 10px 15px;
+                color: #fff !important;
+                border: none;
+                outline: none;
+                font-family: "open sans";
+                font-size: 14px;
+                margin-left: 15px;
+                background-color: #AAAAAA;
+                cursor: pointer;
+                text-decoration: none;
             }
         }
     }
@@ -370,6 +380,12 @@ button {
 
     &__contacts_content {
         padding: 1em 30px;
+        .no_results_found {
+            font-family: "open sans";
+            text-align: center;
+            width: 100%;
+            margin-top: 3em;
+        }
         &__row {}
         &__card_div {
             padding: 15px;
@@ -527,7 +543,7 @@ button {
             padding: 15px;
         }
         .add_card {
-            min-height: 530px;
+            min-height: 525px;
             background-color: #fff;
 
             .user_image {

@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="dashboard_lhs__nav_div">
-                    <a href="" class="dashboard_lhs__nav_div__nav_item active">
+                    <a href="<?php echo BASE_URL;?>" class="dashboard_lhs__nav_div__nav_item active">
                         <i class="material-icons">contacts</i> Contacts</a>
                     <a href="" class="dashboard_lhs__nav_div__nav_item">
                         <i class="material-icons">settings</i> Settings</a>

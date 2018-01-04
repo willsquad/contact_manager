@@ -1,4 +1,10 @@
-<?php include('include/header.php'); ?>
+<?php 
+
+include('include/header.php'); 
+
+$user_id = 1;
+
+?>
             
             <!-- START OF RHS  -->
             <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs">
@@ -40,7 +46,50 @@
                 <!-- START OF RHS CONTENT  -->
                 <div class="dashboard_rhs__contacts_content">
                     <div class="dashboard_rhs__contacts_content__row row ">
-                        <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+
+                    <?php 
+                        $result = $dbc->query("SELECT `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id");
+                        if($result->num_rows > 0) { // Results found
+                            while($data = $result->fetch_assoc()) {
+                                echo '<div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+                                            <div class="dashboard_rhs__contacts_content__card_div__card">
+                
+                                                <div class="checkbox_fav_settings_container">
+                                                    <div class="checkbox_div">
+                                                        <input type="checkbox">
+                                                    </div>
+                                                    <div class="favorite_icon">
+                                                        <i class="material-icons">favorite</i>
+                                                    </div>
+                
+                                                    <div class="settings_icon">
+                                                        <i class="material-icons">settings</i>
+                                                    </div>
+                                                </div>
+                
+                                                <div class="row">
+                                                    <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4">
+                                                        <img src="_files/images/'.$data['c_profile_pic'].'" alt="">
+                                                    </div>
+                                                    <div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8">
+                                                        <h3>'.$data['c_fname']." ".$data['c_lname'].'</h3>
+                                                        <p>
+                                                            <i class="material-icons">phone</i> '.$data['c_phone'].'</p>
+                                                        <p>
+                                                            <i class="material-icons">email</i> '.$data['c_email'].'</p>
+                                                        <p>
+                                                            <i class="material-icons">business</i> '.$data['c_organization'].'</p>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                                        </div>';
+                            }
+                        } else {
+                            echo '<h3 class="no_results_found">No contacts found!</h3>';
+                        }
+                    ?>
+                        <!-- <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
                             <div class="dashboard_rhs__contacts_content__card_div__card">
 
                                 <div class="checkbox_fav_settings_container">
@@ -72,101 +121,9 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
-                            <div class="dashboard_rhs__contacts_content__card_div__card">
-                                <div class="checkbox_fav_settings_container">
-                                    <div class="checkbox_div">
-                                        <input type="checkbox">
-                                    </div>
-                                    <div class="favorite_icon">
-                                        <i class="material-icons">favorite</i>
-                                    </div>
-
-                                    <div class="settings_icon">
-                                        <i class="material-icons">settings</i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4">
-                                        <img src="_files/images/profile3.jpg" alt="">
-                                    </div>
-                                    <div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8">
-                                        <h3>Mark Doe</h3>
-                                        <p>
-                                            <i class="material-icons">phone</i> +1234567890</p>
-                                        <p>
-                                            <i class="material-icons">email</i> mark@doemail.com</p>
-                                        <p>
-                                            <i class="material-icons">business</i> Doemail, Inc</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
-                            <div class="dashboard_rhs__contacts_content__card_div__card">
-                                <div class="checkbox_fav_settings_container">
-                                    <div class="checkbox_div">
-                                        <input type="checkbox">
-                                    </div>
-                                    <div class="favorite_icon">
-                                        <i class="material-icons">favorite</i>
-                                    </div>
-
-                                    <div class="settings_icon">
-                                        <i class="material-icons">settings</i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4">
-                                        <img src="_files/images/profile5.jpg" alt="">
-                                    </div>
-                                    <div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8">
-                                        <h3>Mary Doe</h3>
-                                        <p>
-                                            <i class="material-icons">phone</i> +1234567890</p>
-                                        <p>
-                                            <i class="material-icons">email</i> mary@doemail.com</p>
-                                        <p>
-                                            <i class="material-icons">business</i> Doemail, Inc</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
-                            <div class="dashboard_rhs__contacts_content__card_div__card">
-                                <div class="checkbox_fav_settings_container">
-                                    <div class="checkbox_div">
-                                        <input type="checkbox">
-                                    </div>
-                                    <div class="favorite_icon">
-                                        <i class="material-icons">favorite</i>
-                                    </div>
-
-                                    <div class="settings_icon">
-                                        <i class="material-icons">settings</i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4">
-                                        <img src="_files/images/profile4.jpg" alt="">
-                                    </div>
-                                    <div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8">
-                                        <h3>Jacob Doe</h3>
-                                        <p>
-                                            <i class="material-icons">phone</i> +1234567890</p>
-                                        <p>
-                                            <i class="material-icons">email</i> jacob@doemail.com</p>
-                                        <p>
-                                            <i class="material-icons">business</i> Doemail, Inc</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <!-- <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
                             <div class="dashboard_rhs__contacts_content__card_div__card"></div>
