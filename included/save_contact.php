@@ -16,6 +16,8 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
         $c_unique_id = filter_var($_POST['contact_cid'], FILTER_SANITIZE_STRING);
         $c_unique_id_snip = substr($c_unique_id, 0, 10);
 
+        $c_added_time = time();
+
         $c_fname = filter_var($_POST['contact_fname'], FILTER_SANITIZE_STRING);
         $c_lname = filter_var($_POST['contact_lname'], FILTER_SANITIZE_STRING);
         $c_phone = filter_var($_POST['contact_phone'], FILTER_SANITIZE_NUMBER_INT);
@@ -40,9 +42,9 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
 		
         if($contact_save_type == 1) { /* Add new Contact*/
             
-            $stmt = $dbc->prepare("INSERT INTO contacts_8521 (`c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_jobTitle`, `c_workPhone`, `c_dob`, `c_gender`, `c_profile_pic`, `c_website`, `c_linkedin`, `c_twitter`, `c_facebook`, `c_unique_id`, `added_by_u_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `c_fname` = ?, `c_lname` = ?, `c_mname` = ?, `c_email` = ?, `c_phone` = ?, `c_organization` = ?, `c_jobTitle` = ?, `c_workPhone` = ?, `c_dob` = ?, `c_gender` = ?, `c_website` = ?, `c_linkedin` = ?, `c_twitter` = ?, `c_facebook` = ?");		
+            $stmt = $dbc->prepare("INSERT INTO contacts_8521 (`c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_jobTitle`, `c_workPhone`, `c_dob`, `c_gender`, `c_profile_pic`, `c_website`, `c_linkedin`, `c_twitter`, `c_facebook`, `c_unique_id`, `added_by_u_id`, `c_added_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `c_fname` = ?, `c_lname` = ?, `c_mname` = ?, `c_email` = ?, `c_phone` = ?, `c_organization` = ?, `c_jobTitle` = ?, `c_workPhone` = ?, `c_dob` = ?, `c_gender` = ?, `c_website` = ?, `c_linkedin` = ?, `c_twitter` = ?, `c_facebook` = ?");		
 
-            $stmt->bind_param("ssssssssssssssssissssssssssssss", $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_profile_pic, $c_website, $c_linkedin, $c_twitter, $c_facebook, $c_unique_id, $added_by_u_id, $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_website, $c_linkedin, $c_twitter, $c_facebook);
+            $stmt->bind_param("ssssssssssssssssiissssssssssssss", $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_profile_pic, $c_website, $c_linkedin, $c_twitter, $c_facebook, $c_unique_id, $added_by_u_id, $c_added_time, $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_website, $c_linkedin, $c_twitter, $c_facebook);
 
             $stmt->execute();
             //$stmt->close();
@@ -103,7 +105,60 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
 
             $dbc->close();
 			
-		}/* End of contact save type = 1 , i.e add New   */
+        }/* End of contact save type = 1 , i.e add New   */
+        
+        else if ($contact_save_type == 2) {  /** contact save type = 2 , i.e Edit Contact   */
+            
+            $stmt = $dbc->prepare("UPDATE contacts_8521 SET `c_fname` = ?, `c_lname` = ?, `c_mname` = ?, `c_email` = ?, `c_phone` = ?, `c_organization` = ?, `c_jobTitle` = ?, `c_workPhone` = ?, `c_dob` = ?, `c_gender` = ?, `c_website` = ?, `c_linkedin` = ?, `c_twitter` = ?, `c_facebook` = ?, `c_profile_pic` = ? WHERE `c_unique_id` = ?");		
+
+            $stmt->bind_param("ssssssssssssssss", $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_website, $c_linkedin, $c_twitter, $c_facebook, $c_profile_pic, $c_unique_id);
+
+            $stmt->execute();
+            //$stmt->close();
+            
+            //printf("Error: %s.\n", $stmt->error);
+            
+            /* echo "\n".$dbc->affected_rows."\n";
+            echo "\n".$stmt->num_rows."\n"; */
+            
+
+            if(isset($_FILES['contact_img_file'])) {
+                $sourcePath_logo = $_FILES['contact_img_file']['tmp_name'];       // Storing source path of the file in a variable
+                $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file']['name'];
+                $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
+                move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
+                
+                
+                $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
+                $stmt2->bind_param("si", $image_new_filename, $c_unique_id);
+                $stmt2->execute();
+
+                //printf("Error: %s.\n", $stmt->error);
+                
+            } else if(isset($_FILES['contact_img_file_mobile'])) {
+                $sourcePath_logo = $_FILES['contact_img_file_mobile']['tmp_name'];       // Storing source path of the file in a variable
+                $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file_mobile']['name'];
+                $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
+                move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
+                
+                $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
+                $stmt2->bind_param("si", $image_new_filename, $c_unique_id);
+                $stmt2->execute();
+                
+                //printf("Error: %s.\n", $stmt->error);
+                
+            } else {
+                // Do Nothing save the default profile pic url
+    
+                
+            }
+
+            $dbc->close();
+
+            /* Return JSON */
+            echo json_encode("Saved");
+
+        }
 		
 	}
 

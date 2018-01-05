@@ -36,11 +36,12 @@ CREATE TABLE contacts_8521 (
     c_additionalPhones TEXT,
     c_additionalEmails TEXT,
     c_unique_id CHAR(64),
+    c_added_time INT,
+    c_modified_time INT,
+    c_favorite TINYINT(1) DEFAULT 0,
     added_by_u_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (c_id),
     UNIQUE (c_unique_id),
     INDEX added_by (added_by_u_id),
     FULLTEXT INDEX fname (c_fname)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
-
-/* Columns to add : Added time (INT), Favourite (1,0)  */

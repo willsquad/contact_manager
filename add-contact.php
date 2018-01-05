@@ -47,7 +47,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
         </div>
     <form id="add_contact_form" name="add_contact_form" method="post" action="#">
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
-            <button type="submit" class="save_and_close" data-cid="<?php echo $cid;?>">Save &amp; Close</button>
+            <button type="submit" class="save_and_close" data-cid="<?php echo $cid;?>" data-type="1">Save &amp; Close</button>
             <a class="cancel_add_contact">Cancel</a>
         </div>
 

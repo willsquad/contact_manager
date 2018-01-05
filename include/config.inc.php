@@ -144,3 +144,29 @@ function getToken($length)
     return $token;
 }
 /*** For PHP 5.6 ***/
+
+/*** Not Empty Check ***/
+function if_not_empty($data) {
+	$data_checked = (!empty($data)?$data:'-');
+	return $data_checked;
+}
+function if_not_empty_value($data) {
+	$data_checked = (!empty($data)?$data:'');
+	return $data_checked;
+}
+function if_not_empty_date($date) {
+	$date_checked = ((!empty($date) && $date != '0000-00-00')?$date:'-');
+	return $date_checked;
+}
+function if_not_empty_gender($gender) {
+	if($gender === 'M') {
+		return 'Male';
+	} else if($gender === 'F') {
+		return 'Female';
+	} else if($gender === 'O') {
+		return 'Other';
+	} else {
+		return '-';
+	}
+}
+/*** Not Empty Check ***/

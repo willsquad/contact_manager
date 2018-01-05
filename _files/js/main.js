@@ -56,6 +56,7 @@ $(document).ready(function() {
     /** Add New Contact **/
     $(document).on('submit', '#add_contact_form', function() {
         var save_contact_button = $('.save_and_close');
+        var contact_save_type = $('.save_and_close').attr('data-type');
 
         var contact_cid = save_contact_button.attr('data-cid');
         var contact_fname = $("#contact_fname").val();
@@ -73,7 +74,7 @@ $(document).ready(function() {
         var contact_linkedin = $("#contact_linkedin").val();
         var contact_twitter = $("#contact_twitter").val();
 
-        var contact_save_type = 1;
+        //var contact_save_type = 1;
 
         contact_formData.append('contact_save_type', contact_save_type);
         contact_formData.append('contact_cid', contact_cid);
@@ -105,8 +106,12 @@ $(document).ready(function() {
               save_contact_button.html('Saving...'); // change submit button text
             },
             success: function() {
-                save_contact_button.html('Redirecting'); // reset submit button text
-                window.location.replace(absolute_link+"/")
+                if(contact_save_type ==1) {
+                    save_contact_button.html('Redirecting'); // reset submit button text
+                    window.location.replace(absolute_link+"/")
+                } else if(contact_save_type == 2) {
+                    save_contact_button.html('Saved'); // reset submit button text
+                }
             },
             error: function(e) {
               console.log(e);
