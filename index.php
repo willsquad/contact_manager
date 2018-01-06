@@ -48,7 +48,7 @@ $user_id = 1;
                     <div class="dashboard_rhs__contacts_content__row row ">
 
                     <?php 
-                        $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id");
+                        $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id`, `c_favorite` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id");
                         if($result->num_rows > 0) { // Results found
                             while($data = $result->fetch_assoc()) {
                                 echo '<div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
@@ -58,8 +58,8 @@ $user_id = 1;
                                                         <div class="checkbox_div">
                                                             <input type="checkbox">
                                                         </div>
-                                                        <div class="favorite_icon">
-                                                            <i class="material-icons">favorite</i>
+                                                        <div class="favorite_icon favorite_icon_js" data-cid="'.$data['c_unique_id'].'" data-fav="'.$data['c_favorite'].'">
+                                                            <i class="material-icons '.(($data['c_favorite'] == 1)?'active':'').'">favorite</i>
                                                         </div>
                     
                                                         <div class="settings_icon">

@@ -5,6 +5,9 @@ require('../include/config.inc.php');
 
 // Require the database connection:
 require(MYSQL);
+
+
+$user_id = 1; // Replace with the real loggin in user's id from SESSION
 		
 
 if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
@@ -60,29 +63,76 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
                 $last_insert_id = $dbc->insert_id;
 
                 if(isset($_FILES['contact_img_file'])) {
-                    $sourcePath_logo = $_FILES['contact_img_file']['tmp_name'];       // Storing source path of the file in a variable
-                    $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file']['name'];
-                    $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
-                    move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
-                    
-                    
-                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_id = ?");
-                    $stmt2->bind_param("si", $image_new_filename, $last_insert_id);
-                    $stmt2->execute();
 
-                    //printf("Error: %s.\n", $stmt->error);
+                    $errors     = array();
+                    $maxsize    = 1024000;
+                    $acceptable = array(
+                        'image/jpeg',
+                        'image/jpg',
+                        'image/gif',
+                        'image/png'
+                    );
+
+                    if(($_FILES['contact_img_file']['size'] >= $maxsize) || ($_FILES["contact_img_file"]["size"] == 0)) {
+                        $errors[] = 'File too large. File must be less than 1 MB.';
+                    }
+
+                    if(!in_array($_FILES['contact_img_file']['type'], $acceptable) && (!empty($_FILES["contact_img_file"]["type"]))) {
+                        $errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted.';
+                    }
+
+                    if(count($errors) === 0) {
+                        $sourcePath_logo = $_FILES['contact_img_file']['tmp_name'];       // Storing source path of the file in a variable
+                        $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file']['name'];
+                        $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
+                        move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
+                        
+                        $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_id = ?");
+                        $stmt2->bind_param("si", $image_new_filename, $last_insert_id);
+                        $stmt2->execute();
+                    } else {
+                        foreach($errors as $error) {
+                            echo '<script>alert("'.$error.'");</script>';
+                        }
+
+                        die(); //Ensure no more processing is done
+                    }
                     
                 } else if(isset($_FILES['contact_img_file_mobile'])) {
-                    $sourcePath_logo = $_FILES['contact_img_file_mobile']['tmp_name'];       // Storing source path of the file in a variable
-                    $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file_mobile']['name'];
-                    $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
-                    move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
-                    
-                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_id = ?");
-                    $stmt2->bind_param("si", $image_new_filename, $last_insert_id);
-                    $stmt2->execute();
-                    
-                    //printf("Error: %s.\n", $stmt->error);
+
+                    $errors     = array();
+                    $maxsize    = 1024000;
+                    $acceptable = array(
+                        'image/jpeg',
+                        'image/jpg',
+                        'image/gif',
+                        'image/png'
+                    );
+
+                    if(($_FILES['contact_img_file']['size'] >= $maxsize) || ($_FILES["contact_img_file"]["size"] == 0)) {
+                        $errors[] = 'File too large. File must be less than 1 MB.';
+                    }
+
+                    if(!in_array($_FILES['contact_img_file']['type'], $acceptable) && (!empty($_FILES["contact_img_file"]["type"]))) {
+                        $errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted.';
+                    }
+
+                    if(count($errors) === 0) {
+                        $sourcePath_logo = $_FILES['contact_img_file_mobile']['tmp_name'];       // Storing source path of the file in a variable
+                        $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file_mobile']['name'];
+                        $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
+                        move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
+                        
+                        $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_id = ?");
+                        $stmt2->bind_param("si", $image_new_filename, $last_insert_id);
+                        $stmt2->execute();
+                    } else {
+                        foreach($errors as $error) {
+                            echo '<script>alert("'.$error.'");</script>';
+                        }
+
+                        die(); //Ensure no more processing is done
+                    }
                     
                 } else {
                     // Do Nothing save the default profile pic url
@@ -108,10 +158,12 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
         }/* End of contact save type = 1 , i.e add New   */
         
         else if ($contact_save_type == 2) {  /** contact save type = 2 , i.e Edit Contact   */
-            
-            $stmt = $dbc->prepare("UPDATE contacts_8521 SET `c_fname` = ?, `c_lname` = ?, `c_mname` = ?, `c_email` = ?, `c_phone` = ?, `c_organization` = ?, `c_jobTitle` = ?, `c_workPhone` = ?, `c_dob` = ?, `c_gender` = ?, `c_website` = ?, `c_linkedin` = ?, `c_twitter` = ?, `c_facebook` = ?, `c_profile_pic` = ? WHERE `c_unique_id` = ?");		
 
-            $stmt->bind_param("ssssssssssssssss", $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_website, $c_linkedin, $c_twitter, $c_facebook, $c_profile_pic, $c_unique_id);
+            $c_modified_time = time();
+            
+            $stmt = $dbc->prepare("UPDATE contacts_8521 SET `c_fname` = ?, `c_lname` = ?, `c_mname` = ?, `c_email` = ?, `c_phone` = ?, `c_organization` = ?, `c_jobTitle` = ?, `c_workPhone` = ?, `c_dob` = ?, `c_gender` = ?, `c_website` = ?, `c_linkedin` = ?, `c_twitter` = ?, `c_facebook` = ?, `c_modified_time` = ? WHERE `c_unique_id` = ?");		
+
+            $stmt->bind_param("ssssssssssssssis", $c_fname, $c_lname, $c_mname, $c_email, $c_phone, $c_organization, $c_jobTitle, $c_workPhone, $c_dob, $c_gender, $c_website, $c_linkedin, $c_twitter, $c_facebook, $c_modified_time, $c_unique_id);
 
             $stmt->execute();
             //$stmt->close();
@@ -123,29 +175,77 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
             
 
             if(isset($_FILES['contact_img_file'])) {
-                $sourcePath_logo = $_FILES['contact_img_file']['tmp_name'];       // Storing source path of the file in a variable
-                $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file']['name'];
-                $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
-                move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
-                
-                
-                $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
-                $stmt2->bind_param("si", $image_new_filename, $c_unique_id);
-                $stmt2->execute();
 
-                //printf("Error: %s.\n", $stmt->error);
+                $errors     = array();
+                $maxsize    = 1024000;
+                $acceptable = array(
+                    'image/jpeg',
+                    'image/jpg',
+                    'image/gif',
+                    'image/png'
+                );
+
+                if(($_FILES['contact_img_file']['size'] >= $maxsize) || ($_FILES["contact_img_file"]["size"] == 0)) {
+                    $errors[] = 'File too large. File must be less than 1 MB.';
+                }
+
+                if(!in_array($_FILES['contact_img_file']['type'], $acceptable) && (!empty($_FILES["contact_img_file"]["type"]))) {
+                    $errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted.';
+                }
+
+                if(count($errors) === 0) {
+                    $sourcePath_logo = $_FILES['contact_img_file']['tmp_name'];       // Storing source path of the file in a variable
+                    $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file']['name'];
+                    $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
+                    move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
+                    
+                    
+                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
+                    $stmt2->bind_param("ss", $image_new_filename, $c_unique_id);
+                    $stmt2->execute();
+                } else {
+                    foreach($errors as $error) {
+                        echo '<script>alert("'.$error.'");</script>';
+                    }
+
+                    die(); //Ensure no more processing is done
+                }
                 
             } else if(isset($_FILES['contact_img_file_mobile'])) {
-                $sourcePath_logo = $_FILES['contact_img_file_mobile']['tmp_name'];       // Storing source path of the file in a variable
-                $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file_mobile']['name'];
-                $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
-                move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
-                
-                $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
-                $stmt2->bind_param("si", $image_new_filename, $c_unique_id);
-                $stmt2->execute();
-                
-                //printf("Error: %s.\n", $stmt->error);
+
+                $errors     = array();
+                $maxsize    = 1024000;
+                $acceptable = array(
+                    'image/jpeg',
+                    'image/jpg',
+                    'image/gif',
+                    'image/png'
+                );
+
+                if(($_FILES['contact_img_file']['size'] >= $maxsize) || ($_FILES["contact_img_file"]["size"] == 0)) {
+                    $errors[] = 'File too large. File must be less than 1 MB.';
+                }
+
+                if(!in_array($_FILES['contact_img_file']['type'], $acceptable) && (!empty($_FILES["contact_img_file"]["type"]))) {
+                    $errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted.';
+                }
+
+                if(count($errors) === 0) {
+                    $sourcePath_logo = $_FILES['contact_img_file_mobile']['tmp_name'];       // Storing source path of the file in a variable
+                    $image_new_filename = $c_unique_id_snip."-".$_FILES['contact_img_file_mobile']['name'];
+                    $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
+                    move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
+                    
+                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
+                    $stmt2->bind_param("ss", $image_new_filename, $c_unique_id);
+                    $stmt2->execute();
+                } else {
+                    foreach($errors as $error) {
+                        echo '<script>alert("'.$error.'");</script>';
+                    }
+
+                    die(); //Ensure no more processing is done
+                }
                 
             } else {
                 // Do Nothing save the default profile pic url
@@ -160,7 +260,22 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
 
         }
 		
-	}
+	} else if(isset($_POST['fav_uid']) && isset($_POST['fav_type'])) {
+        $c_unique_id = filter_var($_POST['fav_uid'], FILTER_SANITIZE_STRING);
+        $fav_type = (int)$_POST['fav_type'];
+
+        if($fav_type == 0) {
+            $stmt0 = $dbc->prepare("UPDATE contacts_8521 SET c_favorite = 1 WHERE c_unique_id = ? AND added_by_u_id = ?");
+            $stmt0->bind_param("si", $c_unique_id, $user_id);
+            $stmt0->execute();
+        } else if ($fav_type == 1) {
+            $stmt0 = $dbc->prepare("UPDATE contacts_8521 SET c_favorite = 0 WHERE c_unique_id = ? AND added_by_u_id = ?");
+            $stmt0->bind_param("si", $c_unique_id, $user_id);
+            $stmt0->execute();
+        }
+        
+        echo "Saved";
+    }
 
 }
 

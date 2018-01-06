@@ -120,6 +120,14 @@ button {
 
 .dashboard_rhs {
     padding: 0px;
+
+    .top_bar_contacts_a {
+        color: #333;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
     &__contacts_top_bar {
         padding: 30px;
         display: flex;
@@ -293,8 +301,26 @@ button {
         &__rhs {
             i {
                 margin-left: 30px;
+                color:#333;
+            }
+            .favorite_icon {
+                cursor: pointer; //visibility: hidden;
+                i {
+                    color: #333;
+                    &:hover,
+                    &:active {
+                        color: #eb5767;
+                    }
+                    &.active {
+                        color: #eb5767;
+                    }
+                }
+                /* &.show {
+                    visibility: visible;
+                } */
             }
         }
+        
     }
 
 
@@ -335,8 +361,8 @@ button {
                 position: relative;
                 top: 5px;
                 img {
-                    width: 60px;
-                    height: 60px;
+                    max-width: 60px;
+                    max-height: 60px;
                     border-radius: 60px;
                     background: #999;
                     border: 1px solid #ccc;
@@ -483,6 +509,9 @@ button {
                         font-size: 20px;
                         &:hover,
                         &:active {
+                            color: #eb5767;
+                        }
+                        &.active {
                             color: #eb5767;
                         }
                     }

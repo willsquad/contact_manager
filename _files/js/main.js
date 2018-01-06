@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 
     /** User Image Preview **/
-    var fileTypes = ['jpg', 'jpeg', 'png'];
+    var fileTypes = ['jpg', 'jpeg', 'png', 'gif'];
     var contact_formData = new FormData();
 
     function readURL(input) {
@@ -27,13 +27,14 @@ $(document).ready(function() {
                 };
         
                 reader.readAsDataURL(input.files[0]);
-                $('.logo_file_error').removeClass('display');
+                //$('.logo_file_error').removeClass('display');
 
                 //populate formdata
                 contact_formData.append('contact_img_file', $('#user_img_file_desktop').prop('files')[0]);
                 contact_formData.append('contact_img_file_mobile', $('#user_img_file_mobile').prop('files')[0]);
             } else {
-                 $('.logo_file_error').addClass('display').html('<span class="fa fa-exclamation-triangle"></span> Sorry, only .jpeg, .jpg and .png files are allowed. Please try again with a different image.');
+                 //$('.logo_file_error').addClass('display').html('<span class="fa fa-exclamation-triangle"></span> Sorry, only .jpeg, .jpg and .png files are allowed. Please try again with a different image.');
+                 alert("Sorry, only JPEG, JPG, PNG and GIF files are allowed. Please try again with a different image.");
             }
         }
     }
@@ -41,12 +42,12 @@ $(document).ready(function() {
     $(".user_img_file").change(function(){ // When the file-upload-input changes
         if($(this).get(0).files.length > 0){ // only if a file is selected
             var fileSize = $(this).get(0).files[0].size; // get filesize
-            if(fileSize <= 1024000) { // if filesize less than or equal to 250KB
+            if(fileSize <= 1024000) { // if filesize less than or equal to 1MB
                 readURL(this); // change url
-                $('.logo_size_error').removeClass('display'); // remove error-message's display class
+                //$('.logo_size_error').removeClass('display'); // remove error-message's display class
             } else { // show error message
-                $('.logo_size_error').addClass('display').html('<span class="fa fa-exclamation-triangle"></span> Uh-oh, file size exceeded the upload limit of 1 MB. Please try again with a different image.');
-                //alert("Uh-oh, file size exceedes the upload limit of 250KB. Please try again with a different image");
+                //$('.logo_size_error').addClass('display').html('<span class="fa fa-exclamation-triangle"></span> Uh-oh, file size exceeded the upload limit of 1 MB. Please try again with a different image.');
+                alert("Uh-oh, file size exceeded the upload limit of 1 MB. Please try again with a different image.");
             }
           }
     });
@@ -74,8 +75,6 @@ $(document).ready(function() {
         var contact_linkedin = $("#contact_linkedin").val();
         var contact_twitter = $("#contact_twitter").val();
 
-        //var contact_save_type = 1;
-
         contact_formData.append('contact_save_type', contact_save_type);
         contact_formData.append('contact_cid', contact_cid);
         contact_formData.append('contact_fname', contact_fname);
@@ -92,8 +91,7 @@ $(document).ready(function() {
         contact_formData.append('contact_facebook', contact_facebook);
         contact_formData.append('contact_linkedin', contact_linkedin);
         contact_formData.append('contact_twitter', contact_twitter);
-    
-        
+
         // Send data
         $.ajax({
             url: ''+absolute_link+'/included/save_contact.php',
@@ -123,9 +121,45 @@ $(document).ready(function() {
     /** Add New Contact **/
 
     /** Reset/Refresh page **/
-    $(document).on('click', 'a.cancel_add_contact', function() {
+    $(document).on('click', 'a.cancel_add_contact_js', function() {
         window.location.href=window.location.href;    
     });
+    /** Reset/Refresh page **/
+
+    /** Add to Favorites **/
+    $(document).on('click', '.favorite_icon_js', function() {
+
+        var self = $(this);
+        var data_fav = self.attr('data-fav');
+        var unique_card_id = self.attr('data-cid');
+        
+        $.ajax({
+            url: ''+absolute_link+'/included/save_contact.php',
+            type: 'POST',
+            dataType: 'text',
+            data: {'fav_uid' : unique_card_id, 'fav_type' : data_fav},
+            beforeSend:function() {
+                
+            },
+            success:function() {
+                
+                if(data_fav == 0) {
+                    self.attr('data-fav', 1);
+                    self.find('i').addClass('active');
+                } else if (data_fav == 1) {
+                    self.attr('data-fav', 0);
+                    self.find('i').removeClass('active');
+                }
+                
+            },
+            error: function(e) {
+                console.log(e);
+            }
+        });
+
+        return false;
+    });
+    /** Add to Favorites **/
 
 
 });

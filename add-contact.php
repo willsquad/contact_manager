@@ -14,7 +14,10 @@ $cid = md5(uniqid(time(), true)).getToken(32);
     <!-- START OF TOP BAR  -->
     <div class="dashboard_rhs__contacts_top_bar">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
-            <i class="material-icons">contacts</i> Contacts</div>
+            <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
+                <i class="material-icons">contacts</i> Contacts
+            </a>    
+        </div>
         <div class="dashboard_rhs__contacts_top_bar__search hidden-md-down">
             <i class="material-icons search_icon">search</i>
             <input type="search" placeholder="Search Everything...">
@@ -48,7 +51,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
     <form id="add_contact_form" name="add_contact_form" method="post" action="#">
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
             <button type="submit" class="save_and_close" data-cid="<?php echo $cid;?>" data-type="1">Save &amp; Close</button>
-            <a class="cancel_add_contact">Cancel</a>
+            <a class="cancel_add_contact cancel_add_contact_js">Clear</a>
         </div>
 
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
@@ -224,7 +227,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                                             Website:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" id="contact_website" class="contact_website contact_website_js">
+                                            <input type="text" id="contact_website" class="contact_website contact_website_js" placeholder="http://www.yoursite.com">
                                         </div>
                                     </div>
                                 </div>

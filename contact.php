@@ -10,7 +10,10 @@ include('include/header.php');
     <!-- START OF TOP BAR  -->
     <div class="dashboard_rhs__contacts_top_bar">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
-            <i class="material-icons">contacts</i> Contacts</div>
+            <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
+                <i class="material-icons">contacts</i> Contacts
+            </a>
+        </div>
         <div class="dashboard_rhs__contacts_top_bar__search hidden-md-down">
             <i class="material-icons search_icon">search</i>
             <input type="search" placeholder="Search Everything...">
@@ -60,7 +63,7 @@ if(isset($_GET['u'])) {
         <!-- START OF MID BAR  -->
         <div class="dashboard_rhs__contacts_mid_bar dashboard_rhs__view_contact_mid_bar">
             <div class="dashboard_rhs__view_contact_mid_bar__lhs">
-                <a href="index.php">
+                <a href="<?php echo BASE_URL;?>">
                     <i class="material-icons">arrow_back</i>
                 </a>
             </div>
@@ -82,7 +85,9 @@ if(isset($_GET['u'])) {
                 <a href="edit-contact.php?u=<?php echo $c_id; ?>">
                     <i class="material-icons">edit</i>
                 </a>
-                <i class="material-icons">favorite</i>
+                <div class="favorite_icon favorite_icon_js" data-fav="<?php echo $c_favorite;?>" data-cid="<?php echo $c_unique_id;?>">
+                    <i class="material-icons <?php echo (($c_favorite == 1)?'active':'') ?>">favorite</i>
+                </div>
                 <i class="material-icons">share</i>
             </div>
 
@@ -131,7 +136,9 @@ if(isset($_GET['u'])) {
                                         Phone:
                                     </div>
                                     <div class="block_value">
-                                        <?php echo if_not_empty($c_phone); ?>
+                                        <a href="tel:<?php echo if_not_empty($c_phone); ?>">
+                                            <?php echo if_not_empty($c_phone); ?>
+                                        </a>   
                                     </div>
                                 </div>
                             </div>

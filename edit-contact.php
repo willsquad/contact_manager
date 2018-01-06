@@ -10,6 +10,7 @@ if(isset($_GET['u'])) {
     $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_jobTitle`, `c_workPhone`, `c_dob`, `c_gender`, `c_profile_pic`, `c_website`, `c_linkedin`, `c_twitter`, `c_facebook`, `c_additionalSocial`, `c_additionalPhones`, `c_additionalEmails`, `c_unique_id`, `c_added_time`, `c_modified_time`, `c_favorite`, `added_by_u_id` FROM `contacts_8521` WHERE `c_id` = $c_id LIMIT 1");
     if($result->num_rows == 1) { // Results found
         while($data = $result->fetch_assoc()) {
+            $c_id = $data['c_id'];
             $c_fname = $data['c_fname'];
             $c_lname = $data['c_lname'];
             $c_mname = $data['c_mname'];
@@ -45,7 +46,10 @@ if(isset($_GET['u'])) {
     <!-- START OF TOP BAR  -->
     <div class="dashboard_rhs__contacts_top_bar">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
-            <i class="material-icons">contacts</i> Contacts</div>
+            <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
+                <i class="material-icons">contacts</i> Contacts
+            </a>
+        </div>
         <div class="dashboard_rhs__contacts_top_bar__search hidden-md-down">
             <i class="material-icons search_icon">search</i>
             <input type="search" placeholder="Search Everything...">
@@ -60,7 +64,7 @@ if(isset($_GET['u'])) {
     <!-- START OF MID BAR  -->
     <div class="dashboard_rhs__contacts_mid_bar dashboard_rhs__add_contact_mid_bar">
         <div class="dashboard_rhs__add_contact_mid_bar__lhs">
-            <a  href="index.php">
+            <a  href="<?php echo BASE_URL.'contact.php?u='.$c_id;?>">
                 <i class="material-icons">arrow_back</i>
             </a>
         </div>
@@ -81,8 +85,8 @@ if(isset($_GET['u'])) {
         </div>
     <form id="add_contact_form" name="add_contact_form" method="post" action="#">
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
-            <button type="submit" class="save_and_close" data-cid="<?php echo $c_unique_id;?>" data-type="2">Save &amp; Close</button>
-            <a class="cancel_add_contact">Cancel</a>
+            <button type="submit" class="save_and_close" data-cid="<?php echo $c_unique_id;?>" data-type="2">Save</button>
+            <a href="<?php echo BASE_URL.'contact.php?u='.$c_id;?>" class="cancel_add_contact">Cancel</a>
         </div>
 
         <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
