@@ -200,8 +200,8 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
                     move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
                     
                     
-                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
-                    $stmt2->bind_param("ss", $image_new_filename, $c_unique_id);
+                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ?, c_modified_time = ? WHERE c_unique_id = ?");
+                    $stmt2->bind_param("sis", $image_new_filename, $c_modified_time, $c_unique_id);
                     $stmt2->execute();
                 } else {
                     foreach($errors as $error) {
@@ -236,8 +236,8 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
                     $targetPath_logo = BASE_URI."_files/images/".$image_new_filename; // Target path where file is to be stored
                     move_uploaded_file($sourcePath_logo,$targetPath_logo) ;    // Moving Uploaded file
                     
-                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ? WHERE c_unique_id = ?");
-                    $stmt2->bind_param("ss", $image_new_filename, $c_unique_id);
+                    $stmt2 = $dbc->prepare("UPDATE contacts_8521 SET c_profile_pic = ?, c_modified_time = ? WHERE c_unique_id = ?");
+                    $stmt2->bind_param("sis", $image_new_filename, $c_modified_time, $c_unique_id);
                     $stmt2->execute();
                 } else {
                     foreach($errors as $error) {

@@ -45,3 +45,7 @@ CREATE TABLE contacts_8521 (
     INDEX added_by (added_by_u_id),
     FULLTEXT INDEX fname (c_fname)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
+
+
+/** Add is_deleted column **/
+ALTER TABLE contacts_8521 ADD COLUMN is_deleted_contact TINYINT(1) DEFAULT 0 AFTER c_favorite;

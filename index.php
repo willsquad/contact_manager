@@ -28,14 +28,14 @@ $user_id = 1;
                 <div class="dashboard_rhs__contacts_mid_bar">
                     <div class="dashboard_rhs__contacts_mid_bar__lhs">
                         <a class="add_new_button" href="add-contact.php">
-                            <i class="material-icons">add</i> Add New
+                            <i class="material-icons">add</i> Add <span class="hidden-xs-down">&nbsp;New</span>
                         </a>
                     </div>
                     <div class="dashboard_rhs__contacts_mid_bar__rhs">
                         <div class="dashboard_rhs__contacts_mid_bar__rhs__search hidden-md-down">
                             <i class="material-icons search_icon">search</i>
-                            <input type="search" placeholder="Find contacts">
-                            <i class="material-icons loading_icon rotating">autorenew</i>
+                            <input id="search_contacts" type="search" placeholder="Find contacts">
+                            <i class="material-icons loading_icon rotating"></i>
                         </div>
                         <!-- <i class="material-icons">view_list</i> -->
                         <i class="material-icons">filter_list</i>
@@ -56,7 +56,7 @@ $user_id = 1;
                                                 
                                                     <div class="checkbox_fav_settings_container">
                                                         <div class="checkbox_div">
-                                                            <input type="checkbox">
+                                                            <input type="checkbox" class="contacts_checkbox">
                                                         </div>
                                                         <div class="favorite_icon favorite_icon_js" data-cid="'.$data['c_unique_id'].'" data-fav="'.$data['c_favorite'].'">
                                                             <i class="material-icons '.(($data['c_favorite'] == 1)?'active':'').'">favorite</i>
@@ -135,6 +135,8 @@ $user_id = 1;
                         </div> -->
 
                     </div>
+
+                    <div class="no_contacts_found">No contacts found!</div>
                 </div>
                 <!-- END OF RHS CONTENT  -->
             </div>

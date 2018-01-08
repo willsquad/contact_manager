@@ -94,7 +94,7 @@ $(document).ready(function() {
 
         // Send data
         $.ajax({
-            url: ''+absolute_link+'/included/save_contact.php',
+            url: 'included/save_contact.php',
             type: 'POST',
             processData: false, // important
             contentType: false, // important
@@ -134,7 +134,7 @@ $(document).ready(function() {
         var unique_card_id = self.attr('data-cid');
         
         $.ajax({
-            url: ''+absolute_link+'/included/save_contact.php',
+            url: 'included/save_contact.php',
             type: 'POST',
             dataType: 'text',
             data: {'fav_uid' : unique_card_id, 'fav_type' : data_fav},
@@ -160,6 +160,72 @@ $(document).ready(function() {
         return false;
     });
     /** Add to Favorites **/
+
+    /** SEARCH FILTER **/
+    var typingTimer;                //timer identifier
+    var doneTypingInterval = 500;  //time in ms, 0.5 second for example
+    var $input = $('#search_contacts');
+
+    //on keyup, start the countdown
+    $input.on('keyup', function () {
+        clearTimeout(typingTimer);
+        $('.loading_icon').text('autorenew').addClass('rotating');
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    });
+
+    //on keydown, clear the countdown 
+    $input.on('keydown', function () {
+        clearTimeout(typingTimer);
+    });
+
+    //user is "finished typing," do something
+    function doneTyping () {
+        var self = $input;
+        if(self.val().length >= 1) {
+            var search_value = self.val();
+            $.ajax({
+                url: 'included/search_filter.php',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {'search': 1, 'search_term': search_value},
+                beforeSend: function(){
+                },
+                success: function(data){
+                    $('.loading_icon').text('').removeClass('rotating');
+                    //console.log(data.length); // Results
+                    if(data.length>0) { // If atlest one result is returned
+                        $('.dashboard_rhs__contacts_content__row').contents().hide();
+                        //$('.pagination').contents().hide();
+                        $('.no_contacts_found').hide();
+                        
+                        for (var x in data) {
+
+                            //data[x]['link']
+
+                            // Don't forget to add a search_contact_js class to each contact cards so that those can be removed when required.
+
+                            $('<div class="dashboard_rhs__contacts_content__card_div search_contact_js col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4"><div class="dashboard_rhs__contacts_content__card_div__card" data-cid="'+data[x]['c_unique_id']+'"><div class="checkbox_fav_settings_container"><div class="checkbox_div"><input type="checkbox" class="contacts_checkbox"></div><div class="favorite_icon favorite_icon_js" data-cid="'+data[x]['c_unique_id']+'" data-fav="'+data[x]['c_favorite']+'"><i class="material-icons '+((data[x]['c_favorite'] == 1)?'active':'')+'">favorite</i></div><div class="settings_icon"> <i class="material-icons">settings</i> </div> </div> <div class="row"> <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4"> <a href="contact.php?u='+data[x]['c_id']+'"><img src="_files/images/'+data[x]['c_profile_pic']+'" alt=""> </a></div><div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8"> <a href="contact.php?u='+data[x]['c_id']+'"> <h3>'+data[x]['c_fname']+" "+data[x]['c_lname']+'</h3> <p> <i class="material-icons">phone</i> '+data[x]['c_phone']+'</p> <p> <i class="material-icons">email</i> '+data[x]['c_email']+'</p> <p> <i class="material-icons">business</i> '+data[x]['c_organization']+'</p> </a> </div> </div> </div> </div>').appendTo('.dashboard_rhs__contacts_content__row').slideDown('slow');
+                        }
+                    } else {
+                        //$('.pagination').contents().hide();
+                        $('.dashboard_rhs__contacts_content__row').contents().hide();
+                        $('.no_contacts_found').show();
+                        $('.loading_icon').text('').removeClass('rotating');
+                    }
+                },
+                error: function(){
+                    
+                }
+            });
+        } else if(self.val().length == 0) {
+            //$('.pagination').contents().show();
+            $('.dashboard_rhs__contacts_content__row .search_contact_js').remove(); // remove the search results 
+            $('.no_contacts_found').hide();
+            $('.dashboard_rhs__contacts_content__row').contents().show();  // show the hidden contents    
+            $('.loading_icon').text('').removeClass('rotating');
+        }
+    }
+    /** SEARCH FILTER **/
 
 
 });
