@@ -33,10 +33,30 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300,400,600" rel="stylesheet">
 </head>
 
-<body>
+<body class="">
+
+
 
     <div class="container-fluid">
         <div class="row">
+
+
+        <div class="prompt_overlay col-12">
+            <div class="prompt_message_div col-12 col-sm-6 col-md-7 col-lg-5 col-xl-4 animated slideInDown">
+                <p>Are you sure you want to delete <span id="delete_contact_count"></span> contact(s)?</p>
+                
+                <div class="prompt_button_container">
+                    <button class="prompt_button confirm_delete">Yes</button>
+                    <button class="prompt_button cancel_delete">No</button>
+                </div>
+            </div>
+            <div class="prompt_no_contacts_selected_div col-12 col-sm-6 col-md-7 col-lg-5 col-xl-4 animated slideInDown">
+                <p>Please select a contact to proceed.</p>
+                <div class="prompt_button_container">
+                    <button class="prompt_button cancel_delete">Close</button>
+                </div>
+            </div>
+        </div>
 
             <!-- START OF LHS  -->
             <div class="col-12 col-sm-4 col-lg-3 col-xl-2 dashboard_lhs">

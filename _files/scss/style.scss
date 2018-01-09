@@ -4,6 +4,86 @@
 body {
     background-color: #f2f2f2; //overflow-y: hidden;
     font-family: "open sans" !important;
+    &.overlay_applied {
+        overflow-y: hidden;
+    }
+}
+
+.prompt_overlay {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    user-select: none;
+    //height: 100vh;
+
+    .prompt_message_div, .prompt_no_contacts_selected_div {
+        //height: 175px;
+        background: #fff;
+        margin: 0 auto;
+        margin-top: 3em;
+        box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        transform: translate(0,0);
+        padding: 40px 30px;
+
+        p{
+            margin-bottom: 2.5em;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .prompt_button_container {
+            text-align: center;
+
+            .prompt_button {
+                position: relative;
+                min-width: 80px;
+                padding: 8px 12px;
+                font-weight: 600;
+                text-align: center;
+                color: #FFF;
+                border-radius: 4px;
+                transition: all 0.2s;
+                margin-left: 10px;
+                border: none;
+                font-size: 14px;
+                border: none;
+                outline: none;
+
+
+                &.confirm_delete {
+                    background-color: #00AE68;
+                }
+                &.cancel_delete {
+                    background-color: #aaa;
+                }
+            }
+        }
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInDown {
+    animation-name: slideInDown;
 }
 
 input {
@@ -141,6 +221,10 @@ button {
         }
     }
 
+    .delete_contacts {
+        cursor: pointer;
+    }
+
     &__contacts_top_bar {
         padding: 30px;
         display: flex;
@@ -263,9 +347,9 @@ button {
             }
             i {
                 margin-left: 15px;
-                font-size: 30px;
+                font-size: 24px;
                 @include media-breakpoint-down(xs){
-                    font-size: 24px;
+                    //font-size: 24px;
                 }
             }
         }
@@ -465,6 +549,7 @@ button {
             text-align: center;
             width: 100%;
             margin-top: 3em;
+            font-size: 24px;
         }
         &__row {}
         &__card_div {

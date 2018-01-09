@@ -39,6 +39,7 @@ CREATE TABLE contacts_8521 (
     c_added_time INT,
     c_modified_time INT,
     c_favorite TINYINT(1) DEFAULT 0,
+    is_deleted_contact TINYINT(1) DEFAULT 0,
     added_by_u_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (c_id),
     UNIQUE (c_unique_id),

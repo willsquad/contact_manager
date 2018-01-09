@@ -275,6 +275,29 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
         }
         
         echo "Saved";
+
+    }   
+    else if(isset($_POST['to_delete']) && isset($_POST['count'])) {
+        
+        $to_delete_array = json_decode($_POST['to_delete']);
+        $item_count = (int)$_POST['count'];
+
+        if($item_count > 0) {
+											
+            for($i = 0; $i < $item_count; $i++) {
+            
+                //echo $to_delete_array[$i];
+
+                $stmt0 = $dbc->prepare("UPDATE contacts_8521 SET is_deleted_contact = 1 WHERE c_id = ? AND added_by_u_id = ?");
+                $stmt0->bind_param("ii", $to_delete_array[$i], $user_id);
+                $stmt0->execute();
+                
+            }
+            
+        }
+        
+        
+        echo "Contact(s) Deleted";
     }
 
 }
