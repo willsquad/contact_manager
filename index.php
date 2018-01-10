@@ -46,7 +46,18 @@ $user_id = 1;
 
                 <!-- START OF RHS CONTENT  -->
                 <div class="dashboard_rhs__contacts_content">
-                    <div class="dashboard_rhs__contacts_content__row row ">
+                    <div class="alphabet_filter">
+                        <div class="alphabet_container">
+                            <div class="alphabet_filter_letter" data-alphabet="all" data-filter="2" class="active">ALL</div>
+                            <?php
+                                $aToz = range("a", "z");
+                                foreach($aToz as $alphabet) {
+                                    echo '<div class="alphabet_filter_letter" data-alphabet="'.$alphabet.'" data-filter="1">'.$alphabet.'</div>';
+                                }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="dashboard_rhs__contacts_content__row row contacts_page">
 
                     <?php 
                         $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id`, `c_favorite` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id AND `is_deleted_contact` = 0");

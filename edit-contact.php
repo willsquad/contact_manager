@@ -121,7 +121,7 @@ if(isset($_GET['u'])) {
                         <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
                                 <div class="block_title">
-                                    First Name:
+                                    First Name: *
                                 </div>
                                 <div class="block_value">
                                     <input type="text" id="contact_fname" class="contact_fname contact_fname_js" placeholder="<?php echo if_not_empty($c_fname); ?>" value="<?php echo if_not_empty_value($c_fname); ?>" required>
@@ -131,10 +131,10 @@ if(isset($_GET['u'])) {
                         <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
                                 <div class="block_title">
-                                    Last Name:
+                                    Last Name: *
                                 </div>
                                 <div class="block_value">
-                                    <input type="text" id="contact_lname" class="contact_lname contact_lname_js" placeholder="<?php echo if_not_empty($c_lname); ?>" value="<?php echo if_not_empty_value($c_lname); ?>">
+                                    <input type="text" id="contact_lname" class="contact_lname contact_lname_js" placeholder="<?php echo if_not_empty($c_lname); ?>" value="<?php echo if_not_empty_value($c_lname); ?>" required>
                                 </div>
                             </div>
                         </div>

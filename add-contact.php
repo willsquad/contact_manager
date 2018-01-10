@@ -86,7 +86,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                         <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
                                 <div class="block_title">
-                                    First Name:
+                                    First Name: *
                                 </div>
                                 <div class="block_value">
                                     <input type="text" id="contact_fname" class="contact_fname contact_fname_js" required>
@@ -96,10 +96,10 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                         <div class="col-12 col-sm-12 col-md-6 add_card__info_block_div">
                             <div class="add_card__info_block_div__info_block">
                                 <div class="block_title">
-                                    Last Name:
+                                    Last Name: *
                                 </div>
                                 <div class="block_value">
-                                    <input type="text" id="contact_lname" class="contact_lname contact_lname_js">
+                                    <input type="text" id="contact_lname" class="contact_lname contact_lname_js" required>
                                 </div>
                             </div>
                         </div>
