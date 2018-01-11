@@ -9,7 +9,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
 ?>
 
 <!-- START OF RHS  -->
-<div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs">
+<div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
 
     <!-- START OF TOP BAR  -->
     <div class="dashboard_rhs__contacts_top_bar">

@@ -7,7 +7,7 @@ $user_id = 1;
 ?>
             
             <!-- START OF RHS  -->
-            <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs">
+            <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
                 
                 <!-- START OF TOP BAR  -->
                 <div class="dashboard_rhs__contacts_top_bar">
@@ -46,6 +46,7 @@ $user_id = 1;
 
                 <!-- START OF RHS CONTENT  -->
                 <div class="dashboard_rhs__contacts_content">
+
                     <div class="alphabet_filter">
                         <div class="alphabet_container">
                             <div class="alphabet_filter_letter" data-alphabet="all" data-filter="2" class="active">ALL</div>
@@ -60,11 +61,11 @@ $user_id = 1;
                     <div class="dashboard_rhs__contacts_content__row row contacts_page">
 
                     <?php 
-                        $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id`, `c_favorite` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id AND `is_deleted_contact` = 0");
+                        $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id`, `c_favorite`, `c_added_time` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id AND `is_deleted_contact` = 0 ORDER BY `c_added_time` DESC LIMIT 50");
                         if($result->num_rows > 0) { // Results found
                             while($data = $result->fetch_assoc()) {
                                 echo '<div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
-                                            <div class="dashboard_rhs__contacts_content__card_div__card" data-cid="'.$data['c_unique_id'].'">
+                                            <div class="dashboard_rhs__contacts_content__card_div__card animated fadeIn" data-cid="'.$data['c_unique_id'].'" data-timeadded="'.$data['c_added_time'].'">
                                                 
                                                     <div class="checkbox_fav_settings_container">
                                                         <div class="checkbox_div">
@@ -148,7 +149,9 @@ $user_id = 1;
 
                     </div>
 
-                    <div class="no_contacts_found">No contacts found!</div>
+                    <div class="no_contacts_found animated fadeIn">No contacts found!</div>
+                    <div class="searching_indicator animated fadeIn"><i class="material-icons rotating">autorenew</i></div>
+                    
                 </div>
                 <!-- END OF RHS CONTENT  -->
             </div>
