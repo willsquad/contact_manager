@@ -252,7 +252,7 @@ $(document).ready(function() {
             $('.prompt_no_contacts_selected_div').show()
         }
 
-        console.log(contacts_to_be_deleted_array);
+        //console.log(contacts_to_be_deleted_array);
         //alert("Are you sure you want to delete "+$('.contacts_checkbox:checked').length+ " contact(s)?")
     });
     /*** DELETE CONTACTS ***/
@@ -356,7 +356,7 @@ $(document).ready(function() {
 
             if (($(document).height() - $(window).height() == $(window).scrollTop())) {
 
-                $('.searching_indicator').show();
+                $('.load_more').show();
                 
                 $.ajax({
                     url: 'included/search_filter.php',
@@ -364,7 +364,7 @@ $(document).ready(function() {
                     dataType: 'JSON',
                     data: {'load_more_type' : 1, 'load_more_value' : last_time},
                     success: function(data){
-                        $('.searching_indicator').hide();
+                        $('.load_more').hide();
                         //console.log(data.length); // Results
                          if(data.length>0) { // If atlest one result is returned
                             //$('.pagination').contents().hide();
@@ -378,7 +378,7 @@ $(document).ready(function() {
                                 $('<div class="dashboard_rhs__contacts_content__card_div load_more_contact_js animated fadeIn col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4"><div class="dashboard_rhs__contacts_content__card_div__card" data-cid="'+data[x]['c_unique_id']+'" data-timeadded="'+data[x]['c_added_time']+'"><div class="checkbox_fav_settings_container"><div class="checkbox_div"><input type="checkbox" class="contacts_checkbox" value="'+data[x]['c_id']+'"></div><div class="favorite_icon favorite_icon_js" data-cid="'+data[x]['c_unique_id']+'" data-fav="'+data[x]['c_favorite']+'"><i class="material-icons '+((data[x]['c_favorite'] == 1)?'active':'')+'">favorite</i></div><div class="settings_icon"> <i class="material-icons">settings</i> </div> </div> <div class="row"> <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4"> <a href="contact.php?u='+data[x]['c_id']+'"><img src="_files/images/'+data[x]['c_profile_pic']+'" alt=""> </a></div><div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8"> <a href="contact.php?u='+data[x]['c_id']+'"> <h3>'+data[x]['c_fname']+" "+data[x]['c_lname']+'</h3> <p> <i class="material-icons">phone</i> '+data[x]['c_phone']+'</p> <p> <i class="material-icons">email</i> '+data[x]['c_email']+'</p> <p> <i class="material-icons">business</i> '+data[x]['c_organization']+'</p> </a> </div> </div> </div> </div>').appendTo('.dashboard_rhs__contacts_content__row').slideDown('slow');
                             }
                         } else {
-                            $('.searching_indicator').hide();
+                            $('.load_more').hide();
                         }
                     },
                     error: function() {
@@ -402,5 +402,54 @@ $(document).ready(function() {
     });
 
     /** INFINITE SCROLL **/
+
+
+    /*** EXPORT CONTACTS AS CSV ***/
+    $(document).on('click', '.export_contacts', function() {
+
+        // Contacts selected using the checkbox
+        var contacts_to_be_exported = [];
+
+        // Populate contacts array
+       $('.contacts_checkbox:checked').each(function() {
+            contacts_to_be_exported.push($(this).val());
+        });
+
+         // Convert to JSON
+         contacts_to_be_exported_array = JSON.stringify(contacts_to_be_exported);
+
+        if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
+            $.ajax({
+                url: 'included/save_contact.php',
+                type: 'POST',
+                dataType: 'text',
+                data : {'count' : $('.contacts_checkbox:checked').length,'to_export' : contacts_to_be_exported_array},
+                beforeSend: function(){
+                    
+                },
+                success: function(data) {
+    
+                    $('.prompt_overlay').hide();
+                    $('body').removeClass('overlay_applied');
+                    
+    
+                    /* setTimeout( function(){ 
+                        window.location.href=window.location.href; 
+                    }  , 500 ); */
+                },
+                error: function(){
+                    self.html('Yes');
+                }
+            });
+        } else {
+            $('.prompt_overlay').show();
+            $('.prompt_message_div').hide();
+            $('.prompt_no_contacts_selected_div').show()
+        }
+
+        //console.log(contacts_to_be_exported);
+        //alert("Are you sure you want to delete "+$('.contacts_checkbox:checked').length+ " contact(s)?")
+    });
+     /*** EXPORT CONTACTS AS CSV ***/
 
 });

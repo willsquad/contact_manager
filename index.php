@@ -40,6 +40,7 @@ $user_id = 1;
                         <!-- <i class="material-icons">view_list</i> -->
                         <i class="material-icons">filter_list</i>
                         <i class="material-icons delete_contacts">delete_forever</i>
+                        <i class="material-icons export_contacts" title="Export">file_download</i>
                     </div>
                 </div>
                 <!-- END OF MID BAR  -->
@@ -106,6 +107,7 @@ $user_id = 1;
                         } else {
                             echo '<h3 class="no_results_found">No contacts found!</h3>';
                         }
+                        
                     ?>
                         <!-- <div class="dashboard_rhs__contacts_content__card_div col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
                             <div class="dashboard_rhs__contacts_content__card_div__card">
@@ -151,6 +153,7 @@ $user_id = 1;
 
                     <div class="no_contacts_found animated fadeIn">No contacts found!</div>
                     <div class="searching_indicator animated fadeIn"><i class="material-icons rotating">autorenew</i></div>
+                    <div class="load_more animated fadeIn"><i class="material-icons rotating">autorenew</i></div>
                     
                 </div>
                 <!-- END OF RHS CONTENT  -->
