@@ -38,9 +38,9 @@ $user_id = 1;
                             <i class="material-icons loading_icon rotating"></i>
                         </div>
                         <!-- <i class="material-icons">view_list</i> -->
-                        <i class="material-icons">filter_list</i>
-                        <i class="material-icons delete_contacts">delete_forever</i>
-                        <i class="material-icons export_contacts" title="Export">file_download</i>
+                        <i class="material-icons" title="Filter">filter_list</i>
+                        <i class="material-icons delete_contacts" title="Delete Contacts">delete_forever</i>
+                        <i class="material-icons export_contacts" title="Export Contacts">file_download</i>
                     </div>
                 </div>
                 <!-- END OF MID BAR  -->

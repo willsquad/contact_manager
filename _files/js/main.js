@@ -419,37 +419,22 @@ $(document).ready(function() {
          contacts_to_be_exported_array = JSON.stringify(contacts_to_be_exported);
 
         if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
-            $.ajax({
-                url: 'included/save_contact.php',
-                type: 'POST',
-                dataType: 'text',
-                data : {'count' : $('.contacts_checkbox:checked').length,'to_export' : contacts_to_be_exported_array},
-                beforeSend: function(){
-                    
-                },
-                success: function(data) {
-    
-                    $('.prompt_overlay').hide();
-                    $('body').removeClass('overlay_applied');
-                    
-    
-                    /* setTimeout( function(){ 
-                        window.location.href=window.location.href; 
-                    }  , 500 ); */
-                },
-                error: function(){
-                    self.html('Yes');
-                }
-            });
+            $('.export_contacts').attr('title', 'Export Selected');
+            document.location.href = absolute_link+'/csv.php?contacts='+contacts_to_be_exported_array+'&count='+$('.contacts_checkbox:checked').length;
         } else {
-            $('.prompt_overlay').show();
-            $('.prompt_message_div').hide();
-            $('.prompt_no_contacts_selected_div').show()
+            document.location.href = absolute_link+'/csv.php';
         }
 
-        //console.log(contacts_to_be_exported);
-        //alert("Are you sure you want to delete "+$('.contacts_checkbox:checked').length+ " contact(s)?")
     });
      /*** EXPORT CONTACTS AS CSV ***/
+
+     /*** EXPORT AS VCARD  ***/
+     $(document).on('click', '.share_contact', function() {
+
+        var c_id = $(this).attr('data-cid');
+        document.location.href = absolute_link+'/vcard.php?u='+c_id;
+
+    });
+     /*** EXPORT AS VCARD  ***/
 
 });

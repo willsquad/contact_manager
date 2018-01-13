@@ -258,9 +258,10 @@ button {
         }
     }
 
-    .delete_contacts {
+    .delete_contacts, .export_contacts, .share_contact {
         cursor: pointer;
     }
+    
 
     &__contacts_top_bar {
         padding: 30px;

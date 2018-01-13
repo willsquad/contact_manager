@@ -18,7 +18,7 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
         $search_term = (string)$_POST['search_term'];
         $search_term_like = "%{$search_term}%";
         
-        $stmt = $dbc->prepare("SELECT * FROM contacts_8521 WHERE added_by_u_id = ? AND is_deleted_contact<> 1 AND (c_fname LIKE ? OR c_email LIKE ? OR c_organization LIKE ? OR c_phone LIKE ? OR c_lname LIKE ?) LIMIT 100");
+        $stmt = $dbc->prepare("SELECT * FROM contacts_8521 WHERE added_by_u_id = ? AND is_deleted_contact<> 1 AND (c_fname LIKE ? OR c_email LIKE ? OR c_organization LIKE ? OR c_phone LIKE ? OR c_lname LIKE ?) ORDER BY c_added_time DESC LIMIT 100");
         $stmt->bind_param("isssss", $user_id, $search_term_like, $search_term_like, $search_term_like, $search_term_like, $search_term_like);
         $stmt->execute();
         $r = $stmt->get_result();
@@ -58,7 +58,7 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
         if($alphabet_filter_type == 1) { // Alphabets from A - Z
             $search_term_like = "{$search_term}%";
         
-            $stmt = $dbc->prepare("SELECT * FROM contacts_8521 WHERE added_by_u_id = ? AND is_deleted_contact <> 1 AND c_lname LIKE ? LIMIT 100");
+            $stmt = $dbc->prepare("SELECT * FROM contacts_8521 WHERE added_by_u_id = ? AND is_deleted_contact <> 1 AND c_lname LIKE ? ORDER BY c_added_time DESC LIMIT 100");
             $stmt->bind_param("is", $user_id, $search_term_like);
             $stmt->execute();
             $r = $stmt->get_result();

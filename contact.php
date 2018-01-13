@@ -33,6 +33,7 @@ if(isset($_GET['u'])) {
     $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_jobTitle`, `c_workPhone`, `c_dob`, `c_gender`, `c_profile_pic`, `c_website`, `c_linkedin`, `c_twitter`, `c_facebook`, `c_additionalSocial`, `c_additionalPhones`, `c_additionalEmails`, `c_unique_id`, `c_added_time`, `c_modified_time`, `c_favorite`, `added_by_u_id` FROM `contacts_8521` WHERE `c_id` = $c_id LIMIT 1");
     if($result->num_rows == 1) { // Results found
         while($data = $result->fetch_assoc()) {
+            $c_id = $data['c_id'];
             $c_fname = $data['c_fname'];
             $c_lname = $data['c_lname'];
             $c_mname = $data['c_mname'];
@@ -88,7 +89,7 @@ if(isset($_GET['u'])) {
                 <div class="favorite_icon favorite_icon_js" data-fav="<?php echo $c_favorite;?>" data-cid="<?php echo $c_unique_id;?>">
                     <i class="material-icons <?php echo (($c_favorite == 1)?'active':'') ?>">favorite</i>
                 </div>
-                <i class="material-icons">share</i>
+                <i class="material-icons share_contact" data-cid="<?php echo $c_id; ?>">share</i>
             </div>
 
             <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">

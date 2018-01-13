@@ -14,7 +14,7 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
 
 	if(isset($_POST['contact_fname']) && isset($_POST['contact_cid']) && isset($_POST['contact_lname']) && isset($_POST['contact_phone']) && isset($_POST['contact_email']) && isset($_POST['contact_organization']) && isset($_POST['contact_jobTitle']) && isset($_POST['contact_workPhone']) && isset($_POST['contact_mname']) && isset($_POST['contact_dob']) && isset($_POST['contact_gender']) && isset($_POST['contact_website']) && isset($_POST['contact_facebook']) && isset($_POST['contact_linkedin']) && isset($_POST['contact_twitter']) && isset($_POST['contact_save_type'])) {
 
-        $added_by_u_id = 1;
+        $added_by_u_id = $user_id;
 
         $c_unique_id = filter_var($_POST['contact_cid'], FILTER_SANITIZE_STRING);
         $c_unique_id_snip = substr($c_unique_id, 0, 10);
