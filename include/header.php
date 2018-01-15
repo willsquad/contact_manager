@@ -56,6 +56,15 @@
                     <button class="prompt_button cancel_delete">Close</button>
                 </div>
             </div>
+
+            <div class="prompt_export_contacts col-12 col-sm-6 col-md-7 col-lg-5 col-xl-4 animated slideInDown">
+                <p>Please select the export format.</p>
+                <div class="prompt_button_container">
+                    <button class="prompt_button export_csv">.csv</button>
+                    <button class="prompt_button export_vcf">.vcf</button>
+                    <button class="prompt_button cancel_delete cancel_delete_export"><i class="material-icons">close</i></button>
+                </div>
+            </div>
         </div>
 
             <!-- START OF LHS  -->

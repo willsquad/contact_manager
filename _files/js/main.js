@@ -244,12 +244,14 @@ $(document).ready(function() {
         if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
             $('.prompt_overlay').show();
             $('.prompt_no_contacts_selected_div').hide();
+            $('.prompt_export_contacts').hide();
             $('#delete_contact_count').html($('.contacts_checkbox:checked').length);
             $('body').addClass('overlay_applied');
         } else {
             $('.prompt_overlay').show();
             $('.prompt_message_div').hide();
             $('.prompt_no_contacts_selected_div').show();
+            $('.prompt_export_contacts').hide();
             $('body').addClass('overlay_applied');
         }
 
@@ -408,6 +410,46 @@ $(document).ready(function() {
     /*** EXPORT CONTACTS AS CSV ***/
     $(document).on('click', '.export_contacts', function() {
 
+       // Contacts selected using the checkbox
+        var contacts_to_be_exported = [];
+
+        // Populate contacts array
+       $('.contacts_checkbox:checked').each(function() {
+            contacts_to_be_exported.push($(this).val());
+        });
+
+         // Convert to JSON
+         contacts_to_be_exported_array = JSON.stringify(contacts_to_be_exported);
+
+         if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
+            $('.prompt_overlay').show();
+            $('.prompt_export_contacts').show();
+            $('.prompt_no_contacts_selected_div').hide();
+            $('.prompt_message_div').hide();
+            $('body').addClass('overlay_applied');
+        } else {
+            $('.prompt_overlay').show();
+            $('.prompt_export_contacts').show();
+            $('.prompt_no_contacts_selected_div').hide();
+            $('.prompt_message_div').hide();
+            $('body').addClass('overlay_applied');
+        }
+
+    });
+     /*** EXPORT CONTACTS AS CSV ***/
+
+     /*** EXPORT AS VCARD  ***/
+     $(document).on('click', '.share_contact', function() {
+
+        var c_id = $(this).attr('data-cid');
+        document.location.href = absolute_link+'/vcard.php?u='+c_id;
+        //document.location.href = absolute_link+'/vcard.php';
+
+    });
+     /*** EXPORT AS VCARD  ***/
+
+     /*** EXPORT MODAL ***/
+     $(document).on('click', '.export_csv', function() {
         // Contacts selected using the checkbox
         var contacts_to_be_exported = [];
 
@@ -425,18 +467,29 @@ $(document).ready(function() {
         } else {
             document.location.href = absolute_link+'/csv.php';
         }
+     });
+     $(document).on('click', '.export_vcf', function() {
+         // Contacts selected using the checkbox
+         var contacts_to_be_exported = [];
 
-    });
-     /*** EXPORT CONTACTS AS CSV ***/
+         // Populate contacts array
+        $('.contacts_checkbox:checked').each(function() {
+             contacts_to_be_exported.push($(this).val());
+         });
+ 
+          // Convert to JSON
+          contacts_to_be_exported_array = JSON.stringify(contacts_to_be_exported);
+ 
+         if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
+             $('.export_contacts').attr('title', 'Export Selected');
+             document.location.href = absolute_link+'/vcard.php?contacts='+contacts_to_be_exported_array+'&count='+$('.contacts_checkbox:checked').length;
+         } else {
+            document.location.href = absolute_link+'/vcard.php';
 
-     /*** EXPORT AS VCARD  ***/
-     $(document).on('click', '.share_contact', function() {
-
-        var c_id = $(this).attr('data-cid');
-        document.location.href = absolute_link+'/vcard.php?u='+c_id;
-        //document.location.href = absolute_link+'/vcard.php';
-
-    });
-     /*** EXPORT AS VCARD  ***/
+            //document.location.href = absolute_link+'/vcard.php?u='+c_id;
+            //document.location.href = absolute_link+'/vcard.php';
+         }
+     });
+     /*** EXPORT MODAL ***/
 
 });
