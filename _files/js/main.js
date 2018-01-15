@@ -249,7 +249,8 @@ $(document).ready(function() {
         } else {
             $('.prompt_overlay').show();
             $('.prompt_message_div').hide();
-            $('.prompt_no_contacts_selected_div').show()
+            $('.prompt_no_contacts_selected_div').show();
+            $('body').addClass('overlay_applied');
         }
 
         //console.log(contacts_to_be_deleted_array);
@@ -433,6 +434,7 @@ $(document).ready(function() {
 
         var c_id = $(this).attr('data-cid');
         document.location.href = absolute_link+'/vcard.php?u='+c_id;
+        //document.location.href = absolute_link+'/vcard.php';
 
     });
      /*** EXPORT AS VCARD  ***/
