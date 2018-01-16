@@ -10,9 +10,10 @@ $user_id = 1;
             <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
                 
                 <!-- START OF TOP BAR  -->
-                <div class="dashboard_rhs__contacts_top_bar">
+                <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
                     <div class="dashboard_rhs__contacts_top_bar__page_heading">
-                        <i class="material-icons">contacts</i> Contacts</div>
+                        <i class="material-icons">contacts</i> Contacts
+                    </div>
                     <div class="dashboard_rhs__contacts_top_bar__search hidden-md-down">
                         <i class="material-icons search_icon">search</i>
                         <input type="search" placeholder="Search Everything...">
@@ -28,17 +29,17 @@ $user_id = 1;
                 <div class="dashboard_rhs__contacts_mid_bar">
                     <div class="dashboard_rhs__contacts_mid_bar__lhs">
                         <a class="add_new_button" href="add-contact.php">
-                            <i class="material-icons">add</i> Add <span class="hidden-xs-down">&nbsp;New</span>
+                            <i class="material-icons">add</i> Add <span class="hidden-sm-down">&nbsp;New</span>
                         </a>
                     </div>
                     <div class="dashboard_rhs__contacts_mid_bar__rhs">
-                        <div class="dashboard_rhs__contacts_mid_bar__rhs__search hidden-md-down">
+                        <div class="dashboard_rhs__contacts_mid_bar__rhs__search">
                             <i class="material-icons search_icon">search</i>
                             <input id="search_contacts" type="search" placeholder="Find contacts">
                             <i class="material-icons loading_icon rotating"></i>
                         </div>
                         <!-- <i class="material-icons">view_list</i> -->
-                        <i class="material-icons" title="Filter">filter_list</i>
+                        <i class="material-icons hidden-xl-down" title="Filter">filter_list</i>
                         <i class="material-icons delete_contacts" title="Delete Contacts">delete_forever</i>
                         <i class="material-icons export_contacts" title="Export Contacts">file_download</i>
                     </div>
@@ -60,7 +61,9 @@ $user_id = 1;
                         </div>
                     </div>
                     <div class="dashboard_rhs__contacts_content__row row contacts_page">
-
+                        <div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs hidden-sm-up">
+                            <i class="material-icons">contacts</i> Contacts
+                        </div>
                     <?php 
                         $result = $dbc->query("SELECT `c_id`, `c_fname`, `c_lname`, `c_mname`, `c_email`, `c_phone`, `c_organization`, `c_profile_pic`, `c_unique_id`, `c_favorite`, `c_added_time` FROM `contacts_8521` WHERE `added_by_u_id` = $user_id AND `is_deleted_contact` = 0 ORDER BY `c_added_time` DESC LIMIT 50");
                         if($result->num_rows > 0) { // Results found

@@ -29,7 +29,7 @@ body {
         box-shadow: 0 1px 3px rgba(0,0,0,.3);
         transform: translate(0,0);
         //padding: 40px 30px;
-        padding: 30px 30px 40px;
+        padding: 30px 30px 35px;
 
         //display: none;
 
@@ -38,6 +38,9 @@ body {
             text-align: center;
             font-weight: 600;
             margin-top: .5em;
+            @include media-breakpoint-down(sm){
+                font-size: 15px;
+            }
         }
 
         
@@ -75,6 +78,10 @@ body {
                 padding: 5px;
                 min-width: 40px;
                 border-radius: 0px;
+                background-color: #fff;
+                color: #333;
+                font-weight: 600;
+                line-height: 1.25em;
             }
         }
     }
@@ -249,6 +256,37 @@ button {
     }
 }
 
+.dashboard_lhs_xs {
+    padding: 1em 1em;
+    min-height: 85px;
+    max-height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dashboard_lhs__logo_div{
+        &__logo{
+            font-size: 24px;
+            margin-bottom: 0px;
+            line-height: inherit;
+            display: flex;
+            flex-direction: row;
+            i{
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .xs_menu_button{
+        position: absolute;
+        right: 15px;
+
+        i{
+            font-size: 1.75em;
+        }
+    }
+}
+
 .dashboard_rhs {
     padding: 0px;
 
@@ -266,6 +304,10 @@ button {
         text-align: center;
         display: none;
         margin-top: 3em;
+        z-index: -1;
+        @include media-breakpoint-down(sm) {
+            font-size: 17px;
+        }
         i {
             margin-right: 5px;
         }
@@ -293,6 +335,81 @@ button {
     .delete_contacts, .export_contacts, .share_contact {
         cursor: pointer;
     }
+
+    .more_dropdown_icon {
+        cursor: pointer;
+    } 
+
+    .more_dropdown {
+        width: 150px;
+        background: #fefefe;
+        //height: 135px;
+        height: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        position: absolute;
+        right: 0;
+        top: 40px;
+        z-index: 1000;
+        display: none;
+        .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 10px solid #d0d0d0;
+            position: absolute;
+            right: 4px;
+            top: -10px;
+          }
+
+        .dropdown_content {
+            font-family: "open sans";
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &>div {
+                padding: 10px 15px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                border-bottom: 1px solid #f5f5f5;
+                cursor: pointer;
+
+                a {
+                    width: 100%;
+                    display: flex;
+                    color: #333;
+                    text-decoration: none;
+                }
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            i {
+                color: #333;
+                font-size: 18px;
+                margin-right: 10px;
+            }
+            .favorite_icon {
+                cursor: pointer; //visibility: hidden;
+                i {
+                    color: #333;
+                    &:hover,
+                    &:active {
+                        color: #eb5767;
+                    }
+                    &.active {
+                        color: #eb5767;
+                    }
+                }
+                /* &.show {
+                    visibility: visible;
+                } */
+            }
+        }
+    }
     
 
     &__contacts_top_bar {
@@ -304,6 +421,7 @@ button {
         height: 100px;
         @include media-breakpoint-down(xs){
             padding: 30px 15px;
+            height: 65px;
         }
         &__page_heading {
             display: flex;
@@ -314,9 +432,20 @@ button {
             font-weight: 600;
             align-items: center;
             @include media-breakpoint-down(xs){
-                font-size: 22px;
+                font-size: 20px;
+            }
+            &.page_heading_xs {
+                padding-left: 15px;
+                @include media-breakpoint-down(xs){
+                    font-size: 16px;
+                }
+                i{
+                    margin-right: 8px;
+                    font-size: 20px;
+                }
             }
         }
+       
         &__search {
             flex-grow: 1;
             text-align: center;
@@ -354,7 +483,8 @@ button {
         min-height: 100px;
         user-select: none;
         @include media-breakpoint-down(xs){
-            padding: 30px 15px;
+            padding: 20px 15px;
+            min-block-size: 85px;
         }
         &__lhs {
             .add_new_button {
@@ -373,11 +503,16 @@ button {
                 transition: all 0.1s ease;
                 text-decoration: none;
                 @include media-breakpoint-down(xs){
-                    font-size: 12px;
+                    //font-size: 12px;
+                    font-size: 11px;
+                    padding: 8px 12px;
                 }
                 i {
                     margin-right: 2px;
                     font-size: 20px;
+                    @include media-breakpoint-down(xs){
+                        font-size: 14px;
+                    }
                 }
                 &:hover {
                     transform: translateY(0px);
@@ -405,6 +540,9 @@ button {
                     top: 3px;
                     font-size: 22px;
                     color: #bbb;
+                    @include media-breakpoint-down(md) {
+                        right: 0px;
+                    }
                 }
                 input {
                     border: none;
@@ -414,6 +552,11 @@ button {
                     margin-right: 15px;
                     padding-left: 25px;
                     padding-bottom: 5px;
+                    @include media-breakpoint-down(md) {
+                        width: 140px;
+                        margin-right: 0px;
+                        font-size: 14px;
+                    }
                 }
             }
             i {
@@ -433,6 +576,7 @@ button {
         }
         &>div {
             display: flex;
+            position: relative;
         }
         &__lhs {
             cursor: pointer;
@@ -440,11 +584,18 @@ button {
             i {
                 font-size: 2em;
                 color: #333 !important;
+                @include media-breakpoint-down(sm) {
+                    font-size: 1.5em;
+                }
             }
         }
         &__center {
             flex-grow: 1;
             justify-content: center;
+            @include media-breakpoint-down(xs){
+                //justify-content: flex-start;
+                padding-left: 15px;
+            }
             .user_image {
                 width: 70px;
                 @include media-breakpoint-down(sm) {
@@ -471,18 +622,22 @@ button {
                 }
                 .user_name {
                     color: #171717;
-                    font-size: 22px;
+                    font-size: 20px;
                     font-weight: 600;
                     @include media-breakpoint-down(sm) {
-                        font-size: 18px;
+                        font-size: 15px;
                     }
                 }
             }
         }
         &__rhs {
             i {
-                margin-left: 30px;
+                margin-left: 20px;
                 color:#333;
+                @include media-breakpoint-down(md) {
+                    font-size: 20px;
+                    margin-left: 10px;
+                }
             }
             .favorite_icon {
                 cursor: pointer; //visibility: hidden;
@@ -519,11 +674,18 @@ button {
             i {
                 font-size: 2em;
                 color: #333 !important;
+                @include media-breakpoint-down(sm) {
+                    font-size: 1.5em;
+                }
             }
         }
         &__center {
             flex-grow: 1;
             justify-content: center;
+            @include media-breakpoint-down(sm) {
+                justify-content: flex-start;
+                padding-left: 15px;
+            }
             .plus_icon_div {
                 width: 70px;
                 display: flex;
@@ -567,7 +729,7 @@ button {
                     text-transform: uppercase;
                     margin-bottom: -1px;
                     @include media-breakpoint-down(md) {
-                        font-size: 11px;
+                        font-size: 10px;
                     }
                 }
                 .user_name {
@@ -575,7 +737,7 @@ button {
                     font-size: 22px;
                     font-weight: 600;
                     @include media-breakpoint-down(md) {
-                        font-size: 20px;
+                        font-size: 16px;
                     }
                 }
             }
@@ -587,8 +749,15 @@ button {
                 border: none;
                 outline: none;
                 font-family: "open sans";
-                font-size: 14px;
-                margin-left: 15px;
+                font-size: 13px;
+                margin-left: 5px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+
+                @include media-breakpoint-down(sm){
+                    padding: 8px 12px;
+                }
+
                 &.save_and_close {
                     background-color: #FF5722;
                 }
@@ -600,11 +769,16 @@ button {
                 border: none;
                 outline: none;
                 font-family: "open sans";
-                font-size: 14px;
-                margin-left: 15px;
+                font-size: 13px;
+                margin-left: 5px;
                 background-color: #AAAAAA;
                 cursor: pointer;
                 text-decoration: none;
+                margin-bottom: 5px;
+                margin-top: 5px;
+                @include media-breakpoint-down(sm){
+                    padding: 8px 12px;
+                }
             }
         }
     }
@@ -616,9 +790,14 @@ button {
         //display: flex;
         padding-top: 0px;
         padding-bottom: 0px;
+
+        @include media-breakpoint-down(xs){
+            padding: 0px 15px;
+        }
         
         .alphabet_filter {
-            background: #E6E6E8;
+            //background: #E6E6E8;
+            background: #eaeaea;
             min-width: 40px;
             border-right: 1px solid #c0c0c0;
             text-transform: uppercase;
@@ -627,9 +806,10 @@ button {
             max-width: 40px;
             position: absolute;
             height: 100%;
-            min-height: calc(100vh - 200px);
+            //min-height: calc(100vh - 200px);
+            min-height: 100vh;
             left: 0px;
-            
+            z-index: 1000;
 
             .alphabet_container {
                 padding: 10px 0px;
@@ -668,6 +848,10 @@ button {
         &__row {
             padding-top: 1em;
             //padding-left: 70px;
+            @include media-breakpoint-down(xs){
+                padding-top: 15px;
+            }
+            
             &.contacts_page {
                 padding-left: 40px;
             }

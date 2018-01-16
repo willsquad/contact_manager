@@ -68,7 +68,7 @@
         </div>
 
             <!-- START OF LHS  -->
-            <div class="col-12 col-sm-4 col-lg-3 col-xl-2 dashboard_lhs">
+            <div class="col-12 col-sm-4 col-lg-3 col-xl-2 dashboard_lhs hidden-xs-down">
                 <div class="dashboard_lhs__logo_div">
                     <h2 class="dashboard_lhs__logo_div__logo">Contact
                         <br>Manager</h2>
@@ -86,6 +86,16 @@
                         <i class="material-icons">settings</i> Settings</a>
                     <a href="" class="dashboard_lhs__nav_div__nav_item">
                         <i class="material-icons">power_settings_new</i> Logout</a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-4 col-lg-3 col-xl-2 dashboard_lhs dashboard_lhs_xs hidden-sm-up">
+                <div class="dashboard_lhs__logo_div">
+                    <h2 class="dashboard_lhs__logo_div__logo"><i class="material-icons">perm_contact_calendar
+</i> C M</h2>
+                </div>
+                <div class="xs_menu_button">
+                    <i class="material-icons">menu</i>
                 </div>
             </div>
             <!-- END OF LHS  -->

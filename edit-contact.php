@@ -44,7 +44,7 @@ if(isset($_GET['u'])) {
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs">
 
     <!-- START OF TOP BAR  -->
-    <div class="dashboard_rhs__contacts_top_bar">
+    <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
             <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
                 <i class="material-icons">contacts</i> Contacts
@@ -84,14 +84,14 @@ if(isset($_GET['u'])) {
             </div>
         </div>
     <form id="add_contact_form" name="add_contact_form" method="post" action="#">
-        <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
+        <div class="dashboard_rhs__add_contact_mid_bar__rhs">
             <button type="submit" class="save_and_close" data-cid="<?php echo $c_unique_id;?>" data-type="2">Save</button>
             <a href="<?php echo BASE_URL.'contact.php?u='.$c_id;?>" class="cancel_add_contact">Cancel</a>
         </div>
 
-        <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
+        <!-- <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
             <i class="material-icons">more_vert</i>
-        </div>
+        </div> -->
 
     </div>
     <!-- END OF MID BAR  -->

@@ -12,7 +12,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
 
     <!-- START OF TOP BAR  -->
-    <div class="dashboard_rhs__contacts_top_bar">
+    <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
             <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
                 <i class="material-icons">contacts</i> Contacts
@@ -45,18 +45,18 @@ $cid = md5(uniqid(time(), true)).getToken(32);
             </div>
             <div class="user_name_div">
                 <div class="contact_text">Create Contact</div>
-                <div class="user_name">Add New Contact</div>
+                <div class="user_name">Add New <span class="hidden-md-down">Contact</span></div>
             </div>
         </div>
     <form id="add_contact_form" name="add_contact_form" method="post" action="#">
-        <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-md-down">
-            <button type="submit" class="save_and_close" data-cid="<?php echo $cid;?>" data-type="1">Save &amp; Close</button>
+        <div class="dashboard_rhs__add_contact_mid_bar__rhs">
+            <button type="submit" class="save_and_close" data-cid="<?php echo $cid;?>" data-type="1">Save <span class="hidden-md-down">&amp; Close</span></button>
             <a class="cancel_add_contact cancel_add_contact_js">Clear</a>
         </div>
 
-        <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
+        <!-- <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
             <i class="material-icons">more_vert</i>
-        </div>
+        </div> -->
 
     </div>
     <!-- END OF MID BAR  -->

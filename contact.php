@@ -8,7 +8,7 @@ include('include/header.php');
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
 
     <!-- START OF TOP BAR  -->
-    <div class="dashboard_rhs__contacts_top_bar">
+    <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
             <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
                 <i class="material-icons">contacts</i> Contacts
@@ -93,7 +93,22 @@ if(isset($_GET['u'])) {
             </div>
 
             <div class="dashboard_rhs__add_contact_mid_bar__rhs hidden-lg-up">
-                <i class="material-icons">more_vert</i>
+                <i class="material-icons more_dropdown_icon">more_vert</i>
+
+                <div class="more_dropdown">
+                    <div class="arrow-up"></div>
+                    <div class="dropdown_content">
+                        <div><a href="edit-contact.php?u=<?php echo $c_id; ?>">
+                                <i class="material-icons">edit</i>
+                                Edit
+                            </a> 
+                        </div>
+                        <div class="favorite_icon favorite_icon_js" data-fav="<?php echo $c_favorite;?>" data-cid="<?php echo $c_unique_id;?>">
+                            <i class="material-icons <?php echo (($c_favorite == 1)?'active':'') ?>">favorite</i> Favourite
+                        </div>
+                        <div class="share_contact" data-cid="<?php echo $c_id; ?>"><i class="material-icons">share</i> Share</div>
+                    </div>
+                </div>
             </div>
 
         </div>

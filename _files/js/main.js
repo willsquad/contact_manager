@@ -316,6 +316,8 @@ $(document).ready(function() {
                     $('.dashboard_rhs__contacts_content__row .search_contact_js').remove(); // remove the search results 
                     $('.no_contacts_found').hide();
                     $('.dashboard_rhs__contacts_content__row').contents().show();  // show the hidden contents    
+                    $('.page_heading_xs').remove();
+                    $('<div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs hidden-sm-up"><i class="material-icons">contacts</i> Contacts</div>').prependTo('.dashboard_rhs__contacts_content__row').slideDown('slow');
                  } 
                  else if(data.length>0) { // If atlest one result is returned
                     $('.dashboard_rhs__contacts_content__row').contents().hide();
@@ -330,10 +332,13 @@ $(document).ready(function() {
 
                         $('<div class="dashboard_rhs__contacts_content__card_div search_contact_js animated fadeIn col-12 col-sm-12 col-md-12 col-lg-6 col-xl-4"><div class="dashboard_rhs__contacts_content__card_div__card" data-cid="'+data[x]['c_unique_id']+'" data-timeadded="0"><div class="checkbox_fav_settings_container"><div class="checkbox_div"><input type="checkbox" class="contacts_checkbox" value="'+data[x]['c_id']+'"></div><div class="favorite_icon favorite_icon_js" data-cid="'+data[x]['c_unique_id']+'" data-fav="'+data[x]['c_favorite']+'"><i class="material-icons '+((data[x]['c_favorite'] == 1)?'active':'')+'">favorite</i></div><div class="settings_icon"> <i class="material-icons">settings</i> </div> </div> <div class="row"> <div class="dashboard_rhs__contacts_content__card_div__card__image_div col-sm-6 col-md-4 col-lg-4"> <a href="contact.php?u='+data[x]['c_id']+'"><img src="_files/images/'+data[x]['c_profile_pic']+'" alt=""> </a></div><div class="dashboard_rhs__contacts_content__card_div__card__details col-sm-6 col-md-8 col-lg-8"> <a href="contact.php?u='+data[x]['c_id']+'"> <h3>'+data[x]['c_fname']+" "+data[x]['c_lname']+'</h3> <p> <i class="material-icons">phone</i> '+data[x]['c_phone']+'</p> <p> <i class="material-icons">email</i> '+data[x]['c_email']+'</p> <p> <i class="material-icons">business</i> '+data[x]['c_organization']+'</p> </a> </div> </div> </div> </div>').appendTo('.dashboard_rhs__contacts_content__row').slideDown('slow');
                     }
+
+                    $('<div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs hidden-sm-up"><i class="material-icons">contacts</i> Contacts: '+alphabet_letter.toUpperCase()+'</div>').prependTo('.dashboard_rhs__contacts_content__row').slideDown('slow');
                 } else {
                     //$('.pagination').contents().hide();
                     $('.dashboard_rhs__contacts_content__row').contents().hide();
                     $('.no_contacts_found').show();
+                    $('<div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs hidden-sm-up"><i class="material-icons">contacts</i> Contacts: '+alphabet_letter.toUpperCase()+'</div>').prependTo('.dashboard_rhs__contacts_content__row').slideDown('slow');
                 }
             },
             error: function() {
@@ -491,5 +496,22 @@ $(document).ready(function() {
          }
      });
      /*** EXPORT MODAL ***/
+
+     /*** More Dropdown Icon ***/
+     $(document).on('click', '.more_dropdown_icon', function(){
+        $('.more_dropdown').slideToggle();
+     });
+     /*** More Dropdown Icon ***/
+
+     $(document).mouseup(function(e) {
+            var container = $(".more_dropdown");
+
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!container.is(e.target) && container.has(e.target).length === 0) 
+            {
+                container.hide();
+                $(".more_dropdown").off( 'click', clickDocument );
+            }
+    });
 
 });
