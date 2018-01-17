@@ -169,4 +169,11 @@ function if_not_empty_gender($gender) {
 		return '-';
 	}
 }
+function clean_url($platform, $name, $social_url){
+	if($social_url != '-'){
+		return $platform.'/'.strtolower($name);
+	} else {
+		return '-';
+	}
+}
 /*** Not Empty Check ***/

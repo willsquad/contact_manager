@@ -8,9 +8,9 @@ include('include/header.php');
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
 
     <!-- START OF TOP BAR  -->
-    <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
+    <!-- <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
-            <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
+            <a class="top_bar_contacts_a" href="< ?php echo BASE_URL;?>">
                 <i class="material-icons">contacts</i> Contacts
             </a>
         </div>
@@ -23,7 +23,7 @@ include('include/header.php');
             <i class="material-icons">more_horiz</i>
         </div>
 
-    </div>
+    </div> -->
     <!-- END OF TOP BAR  -->
 
     <?php
@@ -270,7 +270,7 @@ if(isset($_GET['u'])) {
                                                 Website:
                                             </div>
                                             <div class="block_value">
-                                                <a href="<?php echo if_not_empty($c_website); ?>">
+                                                <a href="<?php echo (if_not_empty($c_website) != '-')?if_not_empty($c_website):'#'; ?>">
                                                     <?php echo if_not_empty($c_website); ?>
                                                 </a>
                                             </div>
@@ -283,8 +283,8 @@ if(isset($_GET['u'])) {
                                                 Facebook:
                                             </div>
                                             <div class="block_value">
-                                                <a href="<?php echo if_not_empty($c_facebook); ?>">
-                                                    <?php echo if_not_empty($c_facebook); ?>
+                                                <a href="<?php echo (if_not_empty($c_facebook) != '-')?if_not_empty($c_facebook):'#'; ?>">
+                                                    <?php echo clean_url('facebook', $c_fname, if_not_empty($c_facebook)); ?>
                                                 </a>
                                             </div>
                                         </div>
@@ -296,8 +296,8 @@ if(isset($_GET['u'])) {
                                                 Linkedin:
                                             </div>
                                             <div class="block_value last">
-                                                <a href="<?php echo if_not_empty($c_linkedin); ?>">
-                                                    <?php echo if_not_empty($c_linkedin); ?>
+                                                <a href="<?php echo (if_not_empty($c_linkedin) != '-')?if_not_empty($c_linkedin):'#'; ?>">
+                                                    <?php echo clean_url('linkedin', $c_fname, if_not_empty($c_linkedin)); ?>
                                                 </a>
                                             </div>
                                         </div>
@@ -309,8 +309,8 @@ if(isset($_GET['u'])) {
                                                 Twitter:
                                             </div>
                                             <div class="block_value last">
-                                                <a href="<?php echo if_not_empty($c_twitter); ?>">
-                                                    <?php echo if_not_empty($c_twitter); ?>
+                                                <a href="<?php echo (if_not_empty($c_twitter) != '-')?if_not_empty($c_twitter):'#'; ?>">
+                                                    <?php echo clean_url('twitter', $c_fname, if_not_empty($c_twitter)); ?>
                                                 </a>
                                             </div>
                                         </div>

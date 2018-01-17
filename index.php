@@ -10,7 +10,7 @@ $user_id = 1;
             <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
                 
                 <!-- START OF TOP BAR  -->
-                <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
+                <!-- <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
                     <div class="dashboard_rhs__contacts_top_bar__page_heading">
                         <i class="material-icons">contacts</i> Contacts
                     </div>
@@ -22,7 +22,7 @@ $user_id = 1;
                         <i class="material-icons">notifications</i>
                         <i class="material-icons">more_horiz</i>
                     </div>
-                </div>
+                </div> -->
                 <!-- END OF TOP BAR  -->
 
                 <!-- START OF MID BAR  -->
@@ -51,7 +51,7 @@ $user_id = 1;
 
                     <div class="alphabet_filter">
                         <div class="alphabet_container">
-                            <div class="alphabet_filter_letter" data-alphabet="all" data-filter="2" class="active">ALL</div>
+                            <div class="alphabet_filter_letter active" data-alphabet="all" data-filter="2">ALL</div>
                             <?php
                                 $aToz = range("a", "z");
                                 foreach($aToz as $alphabet) {
@@ -61,7 +61,7 @@ $user_id = 1;
                         </div>
                     </div>
                     <div class="dashboard_rhs__contacts_content__row row contacts_page">
-                        <div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs hidden-sm-up">
+                        <div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs">
                             <i class="material-icons">contacts</i> Contacts
                         </div>
                     <?php 
@@ -79,9 +79,8 @@ $user_id = 1;
                                                             <i class="material-icons '.(($data['c_favorite'] == 1)?'active':'').'">favorite</i>
                                                         </div>
                     
-                                                        <div class="settings_icon">
-                                                            <i class="material-icons">settings</i>
-                                                        </div>
+                                                        
+                                                        
                                                     </div>
                                                 
                 
@@ -154,7 +153,7 @@ $user_id = 1;
 
                     </div>
 
-                    <div class="no_contacts_found animated fadeIn">No contacts found!</div>
+                    <div class="no_contacts_found animated fadeIn"><i class="material-icons">error_outline</i> No contacts found!</div>
                     <div class="searching_indicator animated fadeIn"><i class="material-icons rotating">autorenew</i></div>
                     <div class="load_more animated fadeIn"><i class="material-icons rotating">autorenew</i></div>
                     

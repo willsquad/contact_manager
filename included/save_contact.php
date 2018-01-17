@@ -109,11 +109,11 @@ if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){
                         'image/png'
                     );
 
-                    if(($_FILES['contact_img_file']['size'] >= $maxsize) || ($_FILES["contact_img_file"]["size"] == 0)) {
+                    if(($_FILES['contact_img_file_mobile']['size'] >= $maxsize) || ($_FILES["contact_img_file_mobile"]["size"] == 0)) {
                         $errors[] = 'File too large. File must be less than 1 MB.';
                     }
 
-                    if(!in_array($_FILES['contact_img_file']['type'], $acceptable) && (!empty($_FILES["contact_img_file"]["type"]))) {
+                    if(!in_array($_FILES['contact_img_file_mobile']['type'], $acceptable) && (!empty($_FILES["contact_img_file_mobile"]["type"]))) {
                         $errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted.';
                     }
 

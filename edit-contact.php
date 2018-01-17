@@ -44,9 +44,9 @@ if(isset($_GET['u'])) {
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs">
 
     <!-- START OF TOP BAR  -->
-    <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
+    <!-- <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
-            <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
+            <a class="top_bar_contacts_a" href="< ?php echo BASE_URL;?>">
                 <i class="material-icons">contacts</i> Contacts
             </a>
         </div>
@@ -58,7 +58,7 @@ if(isset($_GET['u'])) {
             <i class="material-icons">notifications</i>
             <i class="material-icons">more_horiz</i>
         </div>
-    </div>
+    </div> -->
     <!-- END OF TOP BAR  -->
 
     <!-- START OF MID BAR  -->
@@ -262,7 +262,7 @@ if(isset($_GET['u'])) {
                                             Website:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" id="contact_website" class="contact_website contact_website_js" placeholder="<?php echo if_not_empty($c_website); ?>" value="<?php echo if_not_empty_value($c_website); ?>">
+                                            <input type="url" id="contact_website" class="contact_website contact_website_js" placeholder="<?php echo if_not_empty($c_website); ?>" value="<?php echo if_not_empty_value($c_website); ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +273,7 @@ if(isset($_GET['u'])) {
                                             Facebook:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" id="contact_facebook" class="contact_facebook contact_facebook_js" placeholder="<?php echo if_not_empty($c_facebook); ?>" value="<?php echo if_not_empty_value($c_facebook); ?>">
+                                            <input type="url" id="contact_facebook" class="contact_facebook contact_facebook_js" placeholder="<?php echo if_not_empty($c_facebook); ?>" value="<?php echo if_not_empty_value($c_facebook); ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -284,7 +284,7 @@ if(isset($_GET['u'])) {
                                             Linkedin:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" id="contact_linkedin" class="contact_linkedin contact_linkedin_js" placeholder="<?php echo if_not_empty($c_linkedin); ?>" value="<?php echo if_not_empty_value($c_linkedin); ?>">
+                                            <input type="url" id="contact_linkedin" class="contact_linkedin contact_linkedin_js" placeholder="<?php echo if_not_empty($c_linkedin); ?>" value="<?php echo if_not_empty_value($c_linkedin); ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@ if(isset($_GET['u'])) {
                                             Twitter:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" id="contact_twitter" class="contact_twitter contact_twitter_js" placeholder="<?php echo if_not_empty($c_twitter); ?>" value="<?php echo if_not_empty_value($c_twitter); ?>">
+                                            <input type="url" id="contact_twitter" class="contact_twitter contact_twitter_js" placeholder="<?php echo if_not_empty($c_twitter); ?>" value="<?php echo if_not_empty_value($c_twitter); ?>">
                                         </div>
                                     </div>
                                 </div>

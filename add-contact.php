@@ -12,9 +12,9 @@ $cid = md5(uniqid(time(), true)).getToken(32);
 <div class="col-12 col-sm-8 offset-sm-4 col-lg-9 offset-lg-3 col-xl-10 offset-xl-2 dashboard_rhs animated fadeIn">
 
     <!-- START OF TOP BAR  -->
-    <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
+    <!-- <div class="dashboard_rhs__contacts_top_bar hidden-xs-down">
         <div class="dashboard_rhs__contacts_top_bar__page_heading">
-            <a class="top_bar_contacts_a" href="<?php echo BASE_URL;?>">
+            <a class="top_bar_contacts_a" href="< ?php echo BASE_URL;?>">
                 <i class="material-icons">contacts</i> Contacts
             </a>    
         </div>
@@ -26,7 +26,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
             <i class="material-icons">notifications</i>
             <i class="material-icons">more_horiz</i>
         </div>
-    </div>
+    </div> -->
     <!-- END OF TOP BAR  -->
 
     <!-- START OF MID BAR  -->
@@ -227,7 +227,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                                             Website:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" id="contact_website" class="contact_website contact_website_js" placeholder="http://www.yoursite.com">
+                                            <input type="url" id="contact_website" class="contact_website contact_website_js" placeholder="http://www.yoursite.com">
                                         </div>
                                     </div>
                                 </div>
@@ -238,7 +238,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                                             Facebook:
                                         </div>
                                         <div class="block_value">
-                                            <input type="text" id="contact_facebook" class="contact_facebook contact_facebook_js">
+                                            <input type="url" id="contact_facebook" class="contact_facebook contact_facebook_js" >
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                                             Linkedin:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" id="contact_linkedin" class="contact_linkedin contact_linkedin_js">
+                                            <input type="url" id="contact_linkedin" class="contact_linkedin contact_linkedin_js">
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +260,7 @@ $cid = md5(uniqid(time(), true)).getToken(32);
                                             Twitter:
                                         </div>
                                         <div class="block_value last">
-                                            <input type="text" id="contact_twitter" class="contact_twitter contact_twitter_js">
+                                            <input type="url" id="contact_twitter" class="contact_twitter contact_twitter_js">
                                         </div>
                                     </div>
                                 </div>

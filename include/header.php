@@ -82,20 +82,42 @@
                 <div class="dashboard_lhs__nav_div">
                     <a href="<?php echo BASE_URL;?>" class="dashboard_lhs__nav_div__nav_item active">
                         <i class="material-icons">contacts</i> Contacts</a>
-                    <a href="" class="dashboard_lhs__nav_div__nav_item">
+                    <a href="#" class="dashboard_lhs__nav_div__nav_item">
                         <i class="material-icons">settings</i> Settings</a>
-                    <a href="" class="dashboard_lhs__nav_div__nav_item">
+                    <a href="#" class="dashboard_lhs__nav_div__nav_item">
                         <i class="material-icons">power_settings_new</i> Logout</a>
                 </div>
             </div>
 
             <div class="col-12 col-sm-4 col-lg-3 col-xl-2 dashboard_lhs dashboard_lhs_xs hidden-sm-up">
                 <div class="dashboard_lhs__logo_div">
-                    <h2 class="dashboard_lhs__logo_div__logo"><i class="material-icons">perm_contact_calendar
-</i> C M</h2>
+                    <a href="<?php echo BASE_URL;?>">
+                        <h2 class="dashboard_lhs__logo_div__logo"><i class="material-icons">contacts</i> Cm</h2>
+                    </a>
                 </div>
-                <div class="xs_menu_button">
+                <div class="xs_menu_button" data-status="0">
                     <i class="material-icons">menu</i>
                 </div>
+            </div>
+
+
+            <div class="mobile_menu_content hidden-sm-up">
+                <div class="mobile_menu_content__container">
+                    <div class="mobile_menu_content__user_div">
+                        <img src="_files/images/profile.jpg" alt="">
+                        <div class="mobile_menu_content__user_div__name_div">John Doe
+                            <i class="material-icons">arrow_drop_down</i>
+                        </div>
+                    </div>
+                    <div class="mobile_menu_content__nav_div">
+                        <a href="<?php echo BASE_URL;?>" class="mobile_menu_content__nav_div__nav_item active">
+                            <i class="material-icons">contacts</i> Contacts</a>
+                        <a href="#" class="mobile_menu_content__nav_div__nav_item">
+                            <i class="material-icons">settings</i> Settings</a>
+                        <a href="#" class="mobile_menu_content__nav_div__nav_item">
+                            <i class="material-icons">power_settings_new</i> Logout</a>
+                    </div>
+                </div>
+                
             </div>
             <!-- END OF LHS  -->
