@@ -210,6 +210,11 @@ button {
     flex-direction: column;
     z-index: 10;
     user-select: none;
+    @media screen and (orientation: landscape) {
+        position: absolute;
+        min-height: 185vh;
+        height: 100%;
+    }
     @include media-breakpoint-down(xs) {
         height: auto;
         position: relative;
