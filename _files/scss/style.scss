@@ -1284,3 +1284,126 @@ button {
 
 
 /**** Dashboard ****/
+
+
+/**** Login  ****/
+.login_container{
+    background-image:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(../bg/login_bg_3.png);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    height: 100%;
+    padding: 100px;
+    font-family: "open sans";
+
+    @include media-breakpoint-down(sm){
+        padding: 30px 20px;
+        background-position: 25% 10%;
+    }
+   /*  display: flex;
+    align-items: center;
+    justify-content: center; */
+
+    .logo {
+        font-family: pacifico;
+        font-size: 35px;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 2em;
+        text-shadow: 1px 1px 3px #000;
+        @include media-breakpoint-down(sm){
+            margin-bottom: 1em;
+        }
+    }
+
+    .login_container_row {
+        /* display: flex;
+        justify-content: flex-end; */
+        //width: 100%;
+    }
+
+    .login_box{
+        //height: 568px;
+        //background-color: #fff;
+        //background-color: #252b4a;
+        //box-shadow: 0 4px 30px -5px #1d1d1d;
+        background-color: transparent;
+        max-width: 475px;
+        margin: 0 auto;
+
+        .additional_options{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .option{
+                color: #fff;
+                text-transform: uppercase;
+                font-family: "open sans";
+                font-size: 13px;
+                font-weight: 600;
+                padding: 0px 30px;
+                border-right: 1px solid #ccc;
+                cursor: pointer;
+                &:last-child{
+                    border-right: none;
+                }
+            }
+        }
+    }
+    #login_form, #register_form, #password_form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 35px;
+        user-select: none;
+        @include media-breakpoint-down(sm){
+            padding: 25px 15px;
+        }
+
+        .login_input_container{
+            width: 100%;
+            position: relative;
+        }
+
+        .username_icon{
+            position: absolute;
+            top: 6px;
+            /* left: 20px; */
+            color: #999;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            border-right: 1px solid #ccc;
+            padding-right:20px;
+            padding-left: 20px;
+            font-size: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 20px;
+            border-radius: 5px;
+            border:none;
+            outline: none;
+            margin-bottom: 10px;
+            padding-left: 75px;
+            box-shadow: 0 4px 30px -5px #1d1d1d;
+        }
+
+        #login_button, #register_button, #password_button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 20px;
+            background-color: #FA7056;
+            outline: none;
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 5px;
+            box-shadow: 0 4px 30px -5px #1d1d1d;
+            font-family: "open sans";
+        }
+    }
+}
+/**** Login  ****/
