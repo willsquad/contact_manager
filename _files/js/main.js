@@ -245,14 +245,17 @@ $(document).ready(function() {
             contacts_to_be_deleted.push($(this).val());
         });
 
-         // Convert to JSON
+         // Convert to JSON 
+         // IMPORTANT: NEEDS TO BE A GLOBAL VARIABLE TO BE ACCESSED BY THE CONFIRM DELETE BUTTON.
         contacts_to_be_deleted_array = JSON.stringify(contacts_to_be_deleted);
 
-        if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
+        var contacts_to_be_deleted_Length = $('.contacts_checkbox:checked').length;
+
+        if(contacts_to_be_deleted_Length > 0) { // If any contacts are selected
             $('.prompt_overlay').show();
             $('.prompt_no_contacts_selected_div').hide();
             $('.prompt_export_contacts').hide();
-            $('#delete_contact_count').html($('.contacts_checkbox:checked').length);
+            $('#delete_contact_count').html(contacts_to_be_deleted_Length);
             $('body').addClass('overlay_applied');
         } else {
             $('.prompt_overlay').show();
@@ -264,6 +267,18 @@ $(document).ready(function() {
 
         //console.log(contacts_to_be_deleted_array);
         //alert("Are you sure you want to delete "+$('.contacts_checkbox:checked').length+ " contact(s)?")
+    });
+
+    $(document).on('click', '.contacts_checkbox', function(){
+
+        var contacts_to_be_deleted_Length = $('.contacts_checkbox:checked').length;
+
+        if(contacts_to_be_deleted_Length > 0) { // If any contacts are selected
+            $('.delete_contacts').addClass('contacts_selected');
+        } else {
+            $('.delete_contacts').removeClass('contacts_selected');
+        }
+
     });
     /*** DELETE CONTACTS ***/
 
@@ -301,7 +316,7 @@ $(document).ready(function() {
         $('body').removeClass('overlay_applied');
     });
 
-    /*** ALPHABET FILTERING ***/
+    /*** ALPHABET FILTERING ***
     $(document).on('click', '.alphabet_filter_letter', function() {
         var self = $(this);
         $('.alphabet_filter_letter').removeClass('active');
@@ -354,7 +369,7 @@ $(document).ready(function() {
         });
 
     });
-    /** ALPHABET FILTERING **/
+     ALPHABET FILTERING **/
 
     /** INFINITE SCROLL **/
 
@@ -420,32 +435,43 @@ $(document).ready(function() {
 
 
     /*** EXPORT CONTACTS AS CSV ***/
+   
     $(document).on('click', '.export_contacts', function() {
 
-       // Contacts selected using the checkbox
-        var contacts_to_be_exported = [];
+       
 
-        // Populate contacts array
-       $('.contacts_checkbox:checked').each(function() {
-            contacts_to_be_exported.push($(this).val());
-        });
+        var cards_found = $('.dashboard_rhs__contacts_content__card_div').length;
 
-         // Convert to JSON
-         contacts_to_be_exported_array = JSON.stringify(contacts_to_be_exported);
+        if(cards_found > 0) {
 
-         if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
-            $('.prompt_overlay').show();
-            $('.prompt_export_contacts').show();
-            $('.prompt_no_contacts_selected_div').hide();
-            $('.prompt_message_div').hide();
-            $('body').addClass('overlay_applied');
+            // Contacts selected using the checkbox
+            var contacts_to_be_exported = [];
+            // Populate contacts array
+            $('.contacts_checkbox:checked').each(function() {
+                contacts_to_be_exported.push($(this).val());
+            });
+
+            // Convert to JSON
+            contacts_to_be_exported_array = JSON.stringify(contacts_to_be_exported);
+
+            if($('.contacts_checkbox:checked').length > 0) { // If any contacts are selected
+                $('.prompt_overlay').show();
+                $('.prompt_export_contacts').show();
+                $('.prompt_no_contacts_selected_div').hide();
+                $('.prompt_message_div').hide();
+                $('body').addClass('overlay_applied');
+            } else {
+                $('.prompt_overlay').show();
+                $('.prompt_export_contacts').show();
+                $('.prompt_no_contacts_selected_div').hide();
+                $('.prompt_message_div').hide();
+                $('body').addClass('overlay_applied');
+            }
         } else {
-            $('.prompt_overlay').show();
-            $('.prompt_export_contacts').show();
-            $('.prompt_no_contacts_selected_div').hide();
-            $('.prompt_message_div').hide();
-            $('body').addClass('overlay_applied');
+            alert('Sorry, no contacts found!');
         }
+
+        
 
     });
      /*** EXPORT CONTACTS AS CSV ***/
@@ -556,6 +582,20 @@ $(document).ready(function() {
         }
     });
     /*** Show mobile menu ***/
+
+    $(document).on('click', '.prompt_overlay', function(){
+        $('.prompt_overlay').hide();
+        $('.prompt_no_contacts_selected_div').show();
+        $('.prompt_export_contacts').show();
+        $('.prompt_message_div ').show();
+        $('body').removeClass('overlay_applied');
+        $('.dashboard_lhs_xs').removeClass('high_zindex')
+
+        $('.mobile_menu_content, .mobile_menu_content__container').removeClass('show_menu');
+        $('.mobile_menu_content, .mobile_menu_content__container').addClass('hide_menu');
+        $('.xs_menu_button').attr('data-status', 0);
+        $('.xs_menu_button').find('i').text('menu');
+    });
     
 
 });

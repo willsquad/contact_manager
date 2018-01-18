@@ -49,17 +49,17 @@ $user_id = 1;
                 <!-- START OF RHS CONTENT  -->
                 <div class="dashboard_rhs__contacts_content">
 
-                    <div class="alphabet_filter">
+                    <!-- <div class="alphabet_filter">
                         <div class="alphabet_container">
                             <div class="alphabet_filter_letter active" data-alphabet="all" data-filter="2">ALL</div>
-                            <?php
+                            < ?php
                                 $aToz = range("a", "z");
                                 foreach($aToz as $alphabet) {
                                     echo '<div class="alphabet_filter_letter" data-alphabet="'.$alphabet.'" data-filter="1">'.$alphabet.'</div>';
                                 }
                             ?>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="dashboard_rhs__contacts_content__row row contacts_page">
                         <div class="dashboard_rhs__contacts_top_bar__page_heading page_heading_xs">
                             <i class="material-icons">contacts</i> Contacts
@@ -80,7 +80,7 @@ $user_id = 1;
                                                         </div>
                     
                                                         
-                                                        
+
                                                     </div>
                                                 
                 
