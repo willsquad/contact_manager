@@ -24,7 +24,7 @@ define ('MYSQL', BASE_URI . 'include/mysql.inc.php');
 // ************ SESSIONS *********** //
 
 // Start the session:
-//session_start();
+session_start();
 
 // ************ SESSIONS *********** //
 // ********************************* //
@@ -76,7 +76,7 @@ set_error_handler('my_error_handler');
 // ************ PASSWORD FUNCTION ************ //
 
 function get_password_hash($password, $dbc) {
-	$pass = mysqli_real_escape_string($dbc, hash_hmac('sha256', $password, 'T*ad$#&^5aJaR', true));
+	$pass = mysqli_real_escape_string($dbc, hash_hmac('sha256', $password, 'T%aQ$#&^5mJdR', true));
 	return md5($pass);
 }
 

@@ -9,19 +9,15 @@
 	
 	$basename = basename($_SERVER['PHP_SELF']);
 		
-	//redirect_invalid_user();
-	
-	
-
+	redirect_invalid_user();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>
         <?php echo (isset($title)? $title : 'Contact Manager') ?>
     </title>
@@ -74,8 +70,8 @@
                         <br>Manager</h2>
                 </div>
                 <div class="dashboard_lhs__user_div">
-                    <img src="_files/images/profile.jpg" alt="">
-                    <div class="dashboard_lhs__user_div__name_div">John Doe
+                    <img src="_files/images/<?php echo $_SESSION['u_profile_pic']; ?>" alt="">
+                    <div class="dashboard_lhs__user_div__name_div"><?php echo $_SESSION['u_fname'].' '.$_SESSION['u_lname']; ?>
                         <i class="material-icons">arrow_drop_down</i>
                     </div>
                 </div>
@@ -84,7 +80,7 @@
                         <i class="material-icons">contacts</i> Contacts</a>
                     <a href="#" class="dashboard_lhs__nav_div__nav_item">
                         <i class="material-icons">settings</i> Settings</a>
-                    <a href="#" class="dashboard_lhs__nav_div__nav_item">
+                    <a href="logout.php" class="dashboard_lhs__nav_div__nav_item">
                         <i class="material-icons">power_settings_new</i> Logout</a>
                 </div>
             </div>
@@ -104,8 +100,8 @@
             <div class="mobile_menu_content hidden-sm-up">
                 <div class="mobile_menu_content__container">
                     <div class="mobile_menu_content__user_div">
-                        <img src="_files/images/profile.jpg" alt="">
-                        <div class="mobile_menu_content__user_div__name_div">John Doe
+                        <img src="_files/images/<?php echo $_SESSION['u_profile_pic']; ?>" alt="">
+                        <div class="mobile_menu_content__user_div__name_div"><?php echo $_SESSION['u_fname'].' '.$_SESSION['u_lname']; ?>
                             <i class="material-icons">arrow_drop_down</i>
                         </div>
                     </div>

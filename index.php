@@ -2,7 +2,7 @@
 
 include('include/header.php'); 
 
-$user_id = 1;
+$user_id = $_SESSION['user_id'];
 
 ?>
             
@@ -107,7 +107,7 @@ $user_id = 1;
                                         </div>';
                             }
                         } else {
-                            echo '<h3 class="no_results_found">No contacts found!</h3>';
+                            echo '<h3 class="no_results_found"><i class="material-icons">error_outline</i> No contacts found!</h3>';
                         }
                         
                     ?>

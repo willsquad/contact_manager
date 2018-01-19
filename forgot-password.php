@@ -21,7 +21,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>
         <?php echo (isset($title)? $title : 'Contact Manager | Forgot Password') ?>
     </title>
@@ -45,11 +45,11 @@
             <div class="col-12 col-md-8 col-ld-5 col-xl-5 login_box">
                 <form id="password_form" action="#" method="post">
                     <div class="login_input_container">
-                        <input type="text" id="password_username" placeholder="registered email">
+                        <input type="email" name="email" id="email_address" placeholder="registered email" required>
                         <i class="material-icons username_icon">email</i>
                     </div>                    
                     
-                    <button id="password_button">Reset Password</button>
+                    <button type="submit" id="password_button">Reset Password</button>
                 </form>
                 <div class="additional_options">
                     <a href="login.php" class="option">Login</a>

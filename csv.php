@@ -6,7 +6,7 @@ require('./include/config.inc.php');
 // Require the database connection:
 require(MYSQL);
 
-$user_id = 1;
+$user_id = $_SESSION['user_id'];
 
 function filter_colname($colname) {
     switch ($colname) {

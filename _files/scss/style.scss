@@ -984,8 +984,17 @@ button {
             font-family: "open sans";
             text-align: center;
             width: 100%;
-            margin-top: 3em;
-            font-size: 24px;
+            //margin-top: 3em;
+            font-size: 18px;
+            font-weight: 600;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            i{
+                vertical-align: middle;
+                margin-right: 5px;
+            }
         }
         &__row {
             padding-top: 1em;
@@ -1327,8 +1336,12 @@ button {
         //background-color: #252b4a;
         //box-shadow: 0 4px 30px -5px #1d1d1d;
         background-color: transparent;
-        max-width: 475px;
+        max-width: 500px !important;
         margin: 0 auto;
+
+        @include media-breakpoint-down(xs){
+            max-width: 400px !important;
+        }
 
         .additional_options{
             display: flex;
@@ -1363,6 +1376,18 @@ button {
         .login_input_container{
             width: 100%;
             position: relative;
+            &.fn_container{
+                padding-right: 5px;
+                @include media-breakpoint-down(xs){
+                    padding-right: 15px;
+                }
+            }
+            &.ln_container{
+                padding-left: 5px;
+                @include media-breakpoint-down(xs){
+                    padding-left: 15px;
+                }
+            }
         }
 
         .username_icon{
@@ -1390,10 +1415,14 @@ button {
             box-shadow: 0 4px 30px -5px #1d1d1d;
         }
 
+        /* input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px white inset;
+        } */
+
         #login_button, #register_button, #password_button {
             margin-top: 10px;
             width: 100%;
-            padding: 20px;
+            padding: 18px;
             background-color: #FA7056;
             outline: none;
             border: none;
@@ -1404,6 +1433,33 @@ button {
             box-shadow: 0 4px 30px -5px #1d1d1d;
             font-family: "open sans";
         }
+    }
+
+}
+
+.error_div{
+    color: #fff;
+    background-color: #d40000;
+    width: 100%;
+    //display: none;
+    font-size: 14px;
+    box-shadow: 0 4px 30px -5px #1d1d1d;
+    
+    &>div{
+        padding: 15px;
+    }
+    i{
+        vertical-align: middle;
+        font-size: 18px;
+        margin-right: 2px;
+
+        vertical-align: middle;
+        font-size: 18px;
+        margin-right: 5px;
+        float: left;
+        height: 50px;
+        position: relative;
+        top: 2px;
     }
 }
 /**** Login  ****/

@@ -7,7 +7,7 @@ require('../include/config.inc.php');
 require(MYSQL);
 
 
-$user_id = 1; // Replace with the real loggin in user's id from SESSION
+$user_id = $_SESSION['user_id']; // Replace with the real loggin in user's id from SESSION
 		
 
 if( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) ){

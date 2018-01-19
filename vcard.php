@@ -6,7 +6,7 @@ require('./include/config.inc.php');
 // Require the database connection:
 require(MYSQL);
 
-$user_id = 1;
+$user_id = $_SESSION['user_id'];
 
 if(isset($_GET['u']) && !isset($_GET['contacts'])) {
 
