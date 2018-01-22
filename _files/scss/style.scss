@@ -254,7 +254,7 @@ button {
         flex-direction: column;
         &__nav_item {
             text-decoration: none !important;
-            color: #fff;
+            color: #fff !important;
             padding: 25px 30px;
             font-weight: 600;
             font-size: 16px;
@@ -1297,12 +1297,13 @@ button {
 
 /**** Login  ****/
 .login_container{
-    background-image:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(../bg/login_bg_3.png);
+    background-image:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url(../bg/login_bg_3.svg);
     background-repeat: no-repeat;
     min-height: 100vh;
     height: 100%;
     padding: 100px;
     font-family: "open sans";
+    background-size: cover;
 
     @include media-breakpoint-down(sm){
         padding: 30px 20px;
@@ -1439,7 +1440,7 @@ button {
 
 .error_div{
     color: #fff;
-    background-color: #d40000;
+    
     width: 100%;
     //display: none;
     font-size: 14px;
@@ -1447,6 +1448,10 @@ button {
     
     &>div{
         padding: 15px;
+        background-color: #d40000;
+    }
+    &>div.success{
+        background-color: #4caf50;
     }
     i{
         vertical-align: middle;

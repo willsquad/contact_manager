@@ -27,7 +27,8 @@
 			if ((filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === $_POST['email']) && (strlen($_POST['email']) <= 50)) {
 					
 				//$email_hash = md5( strtolower( trim($_POST['email']) ) );
-				$e = $_POST['email'];
+                $e = $_POST['email'];
+                $_SESSION['reg_email'] = $e;
 				
 				/* ideticon : https://www.gravatar.com/avatar/05d539ce0c31f79865017189565b0448?d=identicon */
 				
@@ -161,9 +162,9 @@
             <div class="col-12 logo">Contact<br>Manager</div>
 
             <div class="col-12 col-md-8 col-ld-5 col-xl-5 login_box">
-                <form id="login_form" action="#" method="post">
+                <form id="login_form" action="login.php" method="post">
                     <div class="login_input_container">
-                        <input type="email" name="email" id="email_address" placeholder="email" required>
+                        <input type="email" name="email" id="email_address" placeholder="email" value="<?php echo (isset($_SESSION['reg_email'])?htmlspecialchars($_SESSION['reg_email']):''); ?>" required>
                         <i class="material-icons username_icon">email</i>
                     </div>
                     <div class="login_input_container">
@@ -182,7 +183,18 @@
     </div><!-- END OF CONTAINER FLUID  -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="_files/js/main.js"></script>
+    <!-- <script src="_files/js/main.js"></script> -->
+
+    <?php
+    
+    // remove all session variables
+    session_unset(); 
+
+    // destroy the session 
+    session_destroy(); 
+    
+    ?>
+
 </body>
 
 </html>

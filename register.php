@@ -24,11 +24,9 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Check for an email address:
-        if ((filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === $_POST['email']) && (strlen($_POST['email']) <= 50)) {
-                
+        if ((filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === $_POST['email']) && (strlen($_POST['email']) <= 50)) {      
             $e = $_POST['email'];
-    
-            
+            $_SESSION['reg_email'] = $e;     
         } else {
             $reg_errors['email'] = 'Please enter a valid email address.';
         }
@@ -36,13 +34,16 @@
         // Check for a last name:
         if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['fn'])) {
             $fn = (string)$_POST['fn'];
+            $_SESSION['reg_fn'] = $fn;
         } else {
             $reg_errors['first_name'] = 'Please enter your first name.';
+            
         }
 
         // Check for a last name:
         if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['ln'])) {
             $ln = (string)$_POST['ln'];
+            $_SESSION['reg_ln'] = $ln;
         } else {
             $reg_errors['last_name'] = 'Please enter your last name.';
         }
@@ -89,9 +90,28 @@
         }
         
         $ipaddress = get_client_ip();
+
+        $stmt = $dbc->prepare("SELECT `u_id` FROM `users_1792` WHERE u_email = ? LIMIT 1");
+					
+        /* Bind variables to the prepared statement */
+        $stmt->bind_param("s", $e);
+        
+        /* execute query */
+        $stmt->execute();
+        
+        /* Get the result */
+        $r = $stmt->get_result();
+    
+        
+        /* Get the number of rows */
+        if($r->num_rows === 1) { /* Match found, cannot register user */
+            $reg_errors['user_exists'] = 'Sorry, a user account with this email already exists. <a href="forgot-password.php" style="color: #fff; text-decoration: underline;">Click here</a> to reset your password.';
+        }
         
         
         if (empty($reg_errors)) { // If everything's OK...
+
+           
                     
                     $stmt = $dbc->prepare("INSERT INTO users_1792 (u_fname, u_lname, u_email, u_pass, u_reg_time, u_user_ip, u_unique_id) VALUES (?, ?, ?, ?, ?, INET6_ATON(?), ?)");
                 
@@ -236,15 +256,15 @@
                 <form id="register_form" action="register.php" method="post">
                 <div class="row">
                     <div class="login_input_container fn_container col-12 col-sm-6">
-                        <input type="text" name="fn" id="fn" placeholder="first name" value="<?php echo (isset($_POST['fn'])?htmlspecialchars($_POST['fn']):''); ?>" required>
+                        <input type="text" name="fn" id="fn" placeholder="first name" value="<?php echo (isset($_SESSION['reg_fn'])?htmlspecialchars($_SESSION['reg_fn']):''); ?>" required>
                         <i class="material-icons username_icon">person</i>
                     </div>
                     <div class="login_input_container ln_container col-12 col-sm-6">
-                        <input type="text" name="ln" id="ln" placeholder="last name" value="<?php echo (isset($_POST['ln'])?htmlspecialchars($_POST['ln']):''); ?>" required>
+                        <input type="text" name="ln" id="ln" placeholder="last name" value="<?php echo (isset($_SESSION['reg_ln'])?htmlspecialchars($_SESSION['reg_ln']):''); ?>" required>
                         <i class="material-icons username_icon">person</i>
                     </div>
                     <div class="login_input_container col-12">
-                        <input type="email" name="email" id="email_address" placeholder="email" value="<?php echo (isset($_POST['email'])?htmlspecialchars($_POST['email']):''); ?>" required>
+                        <input type="email" name="email" id="email_address" placeholder="email" value="<?php echo (isset($_SESSION['reg_email'])?htmlspecialchars($_SESSION['reg_email']):''); ?>" required>
                         <i class="material-icons username_icon">email</i>
                     </div>
                     <div class="login_input_container col-12">
@@ -271,7 +291,17 @@
     </div><!-- END OF CONTAINER FLUID  -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="_files/js/main.js"></script>
+    <!-- <script src="_files/js/main.js"></script> -->
+
+    <?php
+    
+    // remove all session variables
+    session_unset(); 
+
+    // destroy the session 
+    session_destroy(); 
+    
+    ?>
 </body>
 
 </html>
